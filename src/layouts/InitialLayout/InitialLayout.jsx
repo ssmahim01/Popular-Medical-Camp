@@ -6,7 +6,7 @@ const InitialLayout = () => {
     return (
         <div>
             <Navbar />
-            <div className="pt-16 min-h-[calc(100vh-225px)]">
+            <div className="bg-slate-100 pt-16 min-h-[calc(100vh-225px)]">
             <Outlet />
             </div>
             <Footer />

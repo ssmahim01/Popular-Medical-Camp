@@ -17,11 +17,11 @@ const Navbar = () => {
             src={PopularMedicalLogo}
             alt="Logo of Popular Medical"
           />
-          <h3 className="text-2xl font-bold">Popular Medical</h3>
+          <h3 className="md:block hidden text-2xl font-extrabold">Popular Medical</h3>
         </div>
       </div>
       <div className="flex-none">
-        <div className="md:flex hidden gap-4 items-center text-gray-800 *:font-bold mr-4">
+        <div className="flex md:text-base text-sm gap-4 items-center text-gray-800 *:font-bold mr-4">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/available-camps">Available Camps</NavLink>
         </div>
@@ -43,11 +43,6 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 bg-opacity-80 rounded-lg z-[5] mt-3 w-60 py-3 shadow-md"
             >
-                <div className="md:hidden *:font-bold flex flex-col gap-2 px-2">
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/available-camps">Available Camps</NavLink>
-                </div>
-
               <div className="px-2 *:font-bold flex flex-col gap-2">
                 <h4 className="text-gray-700 font-semibold">{user?.displayName}</h4>
                 <NavLink to="/dashboard">Dashboard</NavLink>
@@ -56,7 +51,7 @@ const Navbar = () => {
             </ul>
           </div>
         ) : (
-          <button className="btn bg-teal-500 border-none rounded-md text-white text-base font-bold">
+          <button className="btn bg-teal-500 border-none rounded-md text-white md:text-base font-bold">
             Join Us
           </button>
         )}
