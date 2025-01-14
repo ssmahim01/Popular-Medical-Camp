@@ -1,12 +1,16 @@
 import PopularMedicalLogo from "../../../assets/images/popular-medical-camp-logo.png";
 import userImg from "../../../assets/images/non-logged-in-user.png";
 import useAuth from "../../../hooks/useAuth";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { TbLogout2 } from "react-icons/tb";
 import "./Navbar.css";
 
 const Navbar = () => {
   const { user } = useAuth();
+  const handleLogout = () => {
+    
+
+  };
 
   return (
     <div className="fixed z-10 border-b border-gray-300 lg:px-16 md:px-8 px-6 navbar bg-base-100">
@@ -46,14 +50,14 @@ const Navbar = () => {
               <div className="px-2 *:font-bold flex flex-col gap-2">
                 <h4 className="text-gray-700 font-semibold">{user?.displayName}</h4>
                 <NavLink to="/dashboard">Dashboard</NavLink>
-                <button className="mt-2 text-white text-lg btn bg-rose-500 border-none flex gap-2 items-center rounded-md"><TbLogout2 className="text-lg font-bold" /> Logout</button>
+                <button onClick={handleLogout} className="mt-2 text-white text-lg btn bg-rose-500 border-none flex gap-2 items-center rounded-md"><TbLogout2 className="text-xl font-bold" /> Logout</button>
               </div>
             </ul>
           </div>
         ) : (
-          <button className="btn bg-teal-500 border-none rounded-md text-white md:text-base font-bold">
-            Join Us
-          </button>
+          <Link to="/login"><button className="btn bg-teal-500 border-none rounded-md text-white md:text-base font-bold">
+          Join Us
+        </button></Link>
         )}
       </div>
     </div>
