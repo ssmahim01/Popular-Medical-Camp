@@ -4,6 +4,8 @@ import InitialLayout from "../layouts/InitialLayout/InitialLayout";
 import AvailableCamps from "../pages/AvailableCamps/AvailableCamps";
 import Login from "../pages/AuthenticationForms/Login";
 import Register from "../pages/AuthenticationForms/Register";
+import Dashboard from "../layouts/DashboardLayout/Dashboard";
+import OrganizerProfile from "../pages/DashboardPages/OrganizerProfile";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +28,16 @@ const router = createBrowserRouter([
                 path: "/register",
                 element: <Register />
             },
+        ]
+    },
+    {
+        path: "/dashboard",
+        element: <Dashboard />,
+        children: [
+            {
+                path: "/dashboard/organizer-profile",
+                element: <OrganizerProfile />
+            }
         ]
     }
 ]);
