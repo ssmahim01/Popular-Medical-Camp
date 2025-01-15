@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "title": "Saving Lives in Rural Areas",
+      "description": "Over 500 patients received free treatment and medicines.",
+      "image": "https://via.placeholder.com/1200x600?text=Medical+Camp+1"
+    },
+    {
+      "id": 2,
+      "title": "Spreading Smiles, Changing Lives",
+      "description": "Successful surgeries conducted for underprivileged families.",
+      "image": "https://via.placeholder.com/1200x600?text=Medical+Camp+2"
+    },
+    {
+      "id": 3,
+      "title": "Hope and Healing for All",
+      "description": "Bringing quality healthcare to the most remote communities.",
+      "image": "https://via.placeholder.com/1200x600?text=Medical+Camp+3"
+    },
+    {
+      "id": 4,
+      "title": "Empowering Women's Health",
+      "description": "Specialized camps for maternal and child healthcare.",
+      "image": "https://via.placeholder.com/1200x600?text=Medical+Camp+4"
+    },
+    {
+      "id": 5,
+      "title": "Community Care in Action",
+      "description": "Collaboration with local organizations for greater impact.",
+      "image": "https://via.placeholder.com/1200x600?text=Medical+Camp+5"
+    }
+  ]  
