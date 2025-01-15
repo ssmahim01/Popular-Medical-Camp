@@ -6,6 +6,8 @@ import Login from "../pages/AuthenticationForms/Login";
 import Register from "../pages/AuthenticationForms/Register";
 import Dashboard from "../layouts/DashboardLayout/Dashboard";
 import OrganizerProfile from "../pages/DashboardPages/OrganizerProfile";
+import AddCamp from "../pages/DashboardPages/AddCamp";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -32,11 +34,15 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
         children: [
             {
                 path: "/dashboard/organizer-profile",
                 element: <OrganizerProfile />
+            },
+            {
+                path: "/dashboard/add-camp",
+                element: <AddCamp />
             }
         ]
     }

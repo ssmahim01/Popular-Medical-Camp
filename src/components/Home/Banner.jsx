@@ -1,18 +1,30 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Banner = () => {
-  const [stories, setStories] = useState([]);
+  // const [stories, setStories] = useState([]);
 
-  useEffect(() => {
-    fetch("stories.json")
-      .then((res) => res.json())
-      .then((data) => setStories(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("stories.json")
+  //     .then((res) => res.json())
+  //     .then((data) => setStories(data));
+  // }, []);
+
+  const {
+    data: stories = [],
+  } = useQuery({
+    queryKey: ["stories"],
+    queryFn: async () => {
+      const res = await axios.get(`stories.json`);
+      return res.data;
+    },
+  });
 
   return (
     <div className="pb-8">
