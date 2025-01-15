@@ -54,6 +54,7 @@ const Navbar = () => {
                 <img
                   alt={user ? user?.displayName : "Guest user"}
                   src={user ? user?.photoURL : userImg}
+                  referrerPolicy="no-referrer"
                 />
               </div>
             </div>
