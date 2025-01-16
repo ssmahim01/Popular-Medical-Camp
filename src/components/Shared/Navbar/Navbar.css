@@ -1,4 +1,4 @@
 a.active{
     color: rgb(11, 66, 184);
-    font-weight: 800;
+    text-decoration: underline;
 }
