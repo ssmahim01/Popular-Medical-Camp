@@ -5,7 +5,7 @@ const useCamps = () => {
     const axiosPublic = useAxiosPublic();
 
     const {data: camps = [], refetch, isPending} = useQuery({
-        queryKey: ["camps", search, sorted],
+        queryKey: ["camps"],
         queryFn: async() => {
             const res = await axiosPublic.get("/camps");
             return res.data;
