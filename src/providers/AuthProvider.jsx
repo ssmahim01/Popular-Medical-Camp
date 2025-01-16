@@ -9,12 +9,14 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import { useAxiosPublic } from "../hooks/useAxiosPublic";
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
   const googleProvider = new GoogleAuthProvider();
 
   const createUser = (email, password) => {
@@ -58,6 +60,17 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      if (currentUser) {
+        const userEmail = { email: currentUser?.email };
+        axiosPublic.post("/jwt-access", userEmail).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("token-access", res.data.token);
+          }
+        })
+      }
+        else {
+            localStorage.removeItem("token-access");
+          }
       setLoading(false);
     });
 

@@ -8,11 +8,13 @@ import Dashboard from "../layouts/DashboardLayout/Dashboard";
 import OrganizerProfile from "../pages/DashboardPages/OrganizerProfile";
 import AddCamp from "../pages/DashboardPages/AddCamp";
 import PrivateRoute from "./PrivateRoute";
+import Error from "../ErrorPage/Error";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <InitialLayout />,
+        errorElement: <Error />,
         children: [
             {
                 path: "/",
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
     {
         path: "/dashboard",
         element: <PrivateRoute><Dashboard /></PrivateRoute>,
+        errorElement: <Error />,
         children: [
             {
                 path: "/dashboard/organizer-profile",

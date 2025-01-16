@@ -32,7 +32,7 @@ const Banner = () => {
         modules={[Pagination, Navigation, Autoplay]}
         pagination={{ clickable: true }}
         navigation
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        autoplay={{ delay: 4000 }}
         loop={true}
         className="w-full lg:h-[500px] md:h-96 h-80"
       >

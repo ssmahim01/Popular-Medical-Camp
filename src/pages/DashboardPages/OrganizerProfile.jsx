@@ -122,9 +122,9 @@ const OrganizerProfile = () => {
               <div className="mt-2 lg:flex justify-between lg:items-center">
                 <h4 className="text-gray-700 lg:text-lg font-bold">
                   <span className="text-gray-800 font-bold">
-                    Creation Time:{" "}
+                    Creation Date:{" "}
                   </span>{" "}
-                  {new Date(organizer?.createdAt).toLocaleTimeString()}
+                  {new Date(organizer?.createdAt).toLocaleDateString()}
                 </h4>
 
                 <h4 className="text-gray-700 lg:text-lg font-bold">
