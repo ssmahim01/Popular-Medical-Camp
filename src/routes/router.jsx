@@ -9,6 +9,7 @@ import OrganizerProfile from "../pages/DashboardPages/OrganizerProfile";
 import AddCamp from "../pages/DashboardPages/AddCamp";
 import PrivateRoute from "./PrivateRoute";
 import Error from "../ErrorPage/Error";
+import CampDetails from "../pages/CampDetails/CampDetails";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: "/available-camps",
                 element: <AvailableCamps />
+            },
+            {
+                path: "/camp-details/:campId",
+                element: <CampDetails />
             },
             {
                 path: "/login",
