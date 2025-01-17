@@ -51,6 +51,7 @@ const CampDetails = () => {
         participantName: user?.displayName,
         participantEmail: user?.email,
         ...data,
+        status: "Pending",
       };
       // console.log(participantData);
 
@@ -72,7 +73,7 @@ const CampDetails = () => {
       Swal.fire({
         position: "center",
         icon: "error",
-        title: `Failed to join the camp`,
+        title: `${error.message}`,
         showConfirmButton: false,
         timer: 3000,
       });
@@ -97,7 +98,7 @@ const CampDetails = () => {
           <img
             src={camp?.image}
             alt={camp?.campName}
-            className="rounded-lg w-full lg:h-96 md:h-80 object-cover"
+            className="rounded-lg w-full lg:h-96 md:h-72 object-cover"
           />
         </figure>
 
@@ -182,13 +183,13 @@ const CampDetails = () => {
               </h2>
               <div className="divider"></div>
 
-              <CampJoinForm 
-              joinCamp={joinCamp}
-              user={user}
-              onSubmit={onSubmit}
-              handleSubmit={handleSubmit}
-              register={register}
-              errors={errors}
+              <CampJoinForm
+                joinCamp={joinCamp}
+                user={user}
+                onSubmit={onSubmit}
+                handleSubmit={handleSubmit}
+                register={register}
+                errors={errors}
               />
             </div>
           </div>

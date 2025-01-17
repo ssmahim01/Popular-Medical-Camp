@@ -1,6 +1,6 @@
 const Loading = () => {
   return (
-    <div className="flex items-center justify-center w-full min-h-[calc(100vh-305px)] pt-40">
+    <div className="flex items-center justify-center w-full lg:pt-40 pt-16">
       <div
         aria-label="Loading..."
         role="status"

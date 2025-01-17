@@ -24,9 +24,8 @@ const GoogleLogin = () => {
         };
 
         // Store User Data in Database
-        const response = await axiosPublic.post("/users", userData);
+        await axiosPublic.post("/users", userData);
 
-        if (response.data.insertedId) {
           Swal.fire({
             position: "center",
             icon: "success",
@@ -35,7 +34,6 @@ const GoogleLogin = () => {
             timer: 3000,
           });
 
-        }
         navigate(from, {replace: true});
       })
       .catch((error) => {
