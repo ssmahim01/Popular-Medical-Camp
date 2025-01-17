@@ -10,6 +10,8 @@ import AddCamp from "../pages/DashboardPages/AddCamp";
 import PrivateRoute from "./PrivateRoute";
 import Error from "../ErrorPage/Error";
 import CampDetails from "../pages/CampDetails/CampDetails";
+import ManageCamps from "../pages/DashboardPages/ManageCamps";
+import UpdateCamp from "../pages/DashboardPages/UpdateCamp";
 
 const router = createBrowserRouter([
     {
@@ -51,7 +53,15 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/add-camp",
                 element: <AddCamp />
-            }
+            },
+            {
+                path: "/dashboard/manage-camps",
+                element: <ManageCamps />
+            },
+            {
+                path: "/dashboard/update-camp/:campId",
+                element: <UpdateCamp />
+            },
         ]
     }
 ]);

@@ -4,7 +4,7 @@ import Loading from "../Loading/Loading";
 import Heading from "../Heading/Heading";
 import { FaUserDoctor } from "react-icons/fa6";
 import { IoLocation, IoTimer } from "react-icons/io5";
-import { MdDateRange } from "react-icons/md";
+import { MdDateRange, MdReadMore } from "react-icons/md";
 import { TbCoinTakaFilled } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { FaArrowAltCircleRight } from "react-icons/fa";
@@ -84,23 +84,31 @@ const PopularCamps = () => {
                   </p>
 
                   <p className="text-gray-700 font-semibold flex gap-2 items-center">
-                  <span className="text-gray-800 font-bold">Camp Fees: </span>
-                  <span className="flex gap-1 items-center">
-                    <TbCoinTakaFilled className="text-xl" /> {camp?.fees}
-                  </span>
-                </p>
+                    <span className="text-gray-800 font-bold">Camp Fees: </span>
+                    <span className="flex gap-1 items-center">
+                      <TbCoinTakaFilled className="text-xl" /> {camp?.fees}
+                    </span>
+                  </p>
                 </div>
+
+                <Link to={`/camp-details/${camp?._id}`} className="block pt-2">
+                  <button className="w-full btn bg-cyan-600 border-none rounded text-white font-bold flex gap-2 items-center px-6">
+                    <span className="text-lg">Details</span>{" "}
+                    <MdReadMore className="text-2xl" />
+                  </button>
+                </Link>
               </div>
             </div>
           ))}
         </div>
 
-            {/* See All Camps Button */}
-            <button className="block mx-auto btn rounded-none border-none bg-violet-600 text-white font-bold px-6">
-            <Link to="/available-camps" className="flex gap-2 items-center">
-                <span className="text-lg">See All Camps</span> <FaArrowAltCircleRight className="text-xl" />
-            </Link>
-            </button>
+        {/* See All Camps Button */}
+        <button className="block mx-auto btn rounded-none border-none bg-violet-600 text-white font-bold px-6">
+          <Link to="/available-camps" className="flex gap-2 items-center">
+            <span className="text-lg">See All Camps</span>{" "}
+            <FaArrowAltCircleRight className="text-xl" />
+          </Link>
+        </button>
       </div>
     </div>
   );
