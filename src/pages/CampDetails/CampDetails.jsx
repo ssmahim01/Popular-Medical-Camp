@@ -51,7 +51,8 @@ const CampDetails = () => {
         participantName: user?.displayName,
         participantEmail: user?.email,
         ...data,
-        status: "Pending",
+        paymentStatus: "Pending",
+        confirmationStatus: "Pending",
       };
       // console.log(participantData);
 

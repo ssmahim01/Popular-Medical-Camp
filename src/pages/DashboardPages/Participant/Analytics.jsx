@@ -35,7 +35,7 @@ const Analytics = () => {
 
       {analyticsData.length === 0 ? (
         <p className="text-rose-600 text-2xl font-bold text-center lg:pt-16 pt-6">
-          No registered camps found
+          No Data found
         </p>
       ) : (
         <>          

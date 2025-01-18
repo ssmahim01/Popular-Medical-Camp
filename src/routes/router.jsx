@@ -15,6 +15,7 @@ import UpdateCamp from "../pages/DashboardPages/UpdateCamp";
 import Analytics from "../pages/DashboardPages/Participant/Analytics";
 import ParticipantProfile from "../pages/DashboardPages/Participant/ParticipantProfile";
 import OrganizerRoute from "./OrganizerRoute";
+import RegisteredCamps from "../pages/DashboardPages/Participant/RegisteredCamps";
 
 const router = createBrowserRouter([
     {
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/participant-profile",
                 element: <ParticipantProfile />
+            },
+            {
+                path: "/dashboard/registered-camps",
+                element: <RegisteredCamps />
             }
         ]
     }
