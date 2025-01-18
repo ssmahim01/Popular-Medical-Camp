@@ -72,7 +72,7 @@ const ManageCamps = () => {
                   </span>{" "}
                   -{" "}
                   <span className="text-gray-700 font-semibold">
-                    {new Date(camp?.dateTime).toLocaleTimeString("en-US")}
+                    {new Date(camp?.dateTime).toLocaleTimeString("en-UK")}
                   </span>
                 </td>
 

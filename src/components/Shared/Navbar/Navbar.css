@@ -1,4 +1,6 @@
 a.active{
-    color: rgb(11, 66, 184);
-    text-decoration: underline;
+    color: rgb(100, 11, 184);
+    border-bottom: 4px solid rgb(100, 11, 184);
+    padding: 0px 4px;
+    border-radius: 5px;
 }

@@ -12,6 +12,8 @@ import Error from "../ErrorPage/Error";
 import CampDetails from "../pages/CampDetails/CampDetails";
 import ManageCamps from "../pages/DashboardPages/ManageCamps";
 import UpdateCamp from "../pages/DashboardPages/UpdateCamp";
+import Analytics from "../pages/DashboardPages/Participant/Analytics";
+import ParticipantProfile from "../pages/DashboardPages/Participant/ParticipantProfile";
 
 const router = createBrowserRouter([
     {
@@ -62,6 +64,16 @@ const router = createBrowserRouter([
                 path: "/dashboard/update-camp/:campId",
                 element: <UpdateCamp />
             },
+
+            // Participant routes
+            {
+                path: "/dashboard/analytics",
+                element: <Analytics />
+            },
+            {
+                path: "/dashboard/participant-profile",
+                element: <ParticipantProfile />
+            }
         ]
     }
 ]);

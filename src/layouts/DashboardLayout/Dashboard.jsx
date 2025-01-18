@@ -6,14 +6,15 @@ import { NavLink, Outlet } from "react-router-dom";
 import { IoAnalyticsSharp } from "react-icons/io5";
 import { BsFillPersonFill } from "react-icons/bs";
 import "../../components/Shared/Navbar/Navbar.css";
+import useOrganizer from "../../hooks/useOrganizer";
 
 const Dashboard = () => {
-  const organizer = true;
+  const [organizer] = useOrganizer();
   return (
-    <div className="flex md:flex-row flex-col">
+    <div className="flex lg:flex-row flex-col">
       {/* Dashboard Side bar */}
-      <div className="p-4 lg:w-72 md:w-64 md:min-h-screen bg-violet-300">
-        <div className="lg:ml-5 flex lg:flex-row md:flex-col flex-row gap-2 items-center md:mb-6 mb-3">
+      <div className="p-4 lg:w-72 lg:min-h-screen bg-violet-300">
+        <div className="lg:ml-3 flex flex-row gap-2 items-center md:mb-6 mb-3">
           <img
             className="w-9 h-9 object-cover"
             src={logo}
@@ -24,7 +25,7 @@ const Dashboard = () => {
           </h2>
         </div>
 
-        <ul className="menu *:font-bold md:flex-col flex-row gap-4 flex-wrap md:space-y-5">
+        <ul className="menu *:font-bold lg:flex-col flex-row gap-4 flex-wrap lg:space-y-5">
           {organizer ? (
             <>
                 <NavLink to="/dashboard/organizer-profile">
@@ -79,7 +80,7 @@ const Dashboard = () => {
       </div>
 
       {/* Dashboard Pages */}
-      <div className="p-8 flex-1 bg-slate-100">
+      <div className="min-h-[calc(100vh-200px)] md:p-8 p-4 flex-1 bg-slate-100">
         <Outlet />
       </div>
     </div>
