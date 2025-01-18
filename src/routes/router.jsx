@@ -14,6 +14,7 @@ import ManageCamps from "../pages/DashboardPages/ManageCamps";
 import UpdateCamp from "../pages/DashboardPages/UpdateCamp";
 import Analytics from "../pages/DashboardPages/Participant/Analytics";
 import ParticipantProfile from "../pages/DashboardPages/Participant/ParticipantProfile";
+import OrganizerRoute from "./OrganizerRoute";
 
 const router = createBrowserRouter([
     {
@@ -50,19 +51,19 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/dashboard/organizer-profile",
-                element: <OrganizerProfile />
+                element: <OrganizerRoute><OrganizerProfile /></OrganizerRoute>
             },
             {
                 path: "/dashboard/add-camp",
-                element: <AddCamp />
+                element: <OrganizerProfile><AddCamp /></OrganizerProfile>
             },
             {
                 path: "/dashboard/manage-camps",
-                element: <ManageCamps />
+                element: <OrganizerProfile><ManageCamps /></OrganizerProfile>
             },
             {
                 path: "/dashboard/update-camp/:campId",
-                element: <UpdateCamp />
+                element: <OrganizerProfile><UpdateCamp /></OrganizerProfile>
             },
 
             // Participant routes
