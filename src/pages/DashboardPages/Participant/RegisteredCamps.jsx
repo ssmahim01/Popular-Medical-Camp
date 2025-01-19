@@ -65,7 +65,7 @@ const RegisteredCamps = () => {
       <div className="overflow-x-auto bg-base-100 bg-opacity-80 shadow-md md:rounded-lg">
         <table className="table w-full">
           <thead>
-            <tr className="bg-neutral *:text-white *:font-bold">
+            <tr className="bg-neutral *:text-sm *:text-white *:font-bold">
               <th>No.</th>
               <th>Camp Name</th>
               <th>Camp Fees</th>

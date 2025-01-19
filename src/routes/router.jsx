@@ -17,6 +17,7 @@ import ParticipantProfile from "../pages/DashboardPages/Participant/ParticipantP
 import OrganizerRoute from "./OrganizerRoute";
 import RegisteredCamps from "../pages/DashboardPages/Participant/RegisteredCamps";
 import Payment from "../pages/DashboardPages/Participant/Payment";
+import PaymentHistory from "../pages/DashboardPages/Participant/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/payment-page/:campId",
                 element: <Payment />
+            },
+            {
+                path: "/dashboard/payment-history",
+                element: <PaymentHistory />
             }
         ]
     }

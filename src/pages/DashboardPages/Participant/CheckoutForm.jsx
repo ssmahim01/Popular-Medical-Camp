@@ -79,9 +79,6 @@ const CheckoutForm = ({ campId }) => {
     } else {
       if (paymentIntent.status === "succeeded") {
         setTransactionId(paymentIntent.id);
-        setInterval(() => {
-          navigate("/dashboard/registered-camps")            
-        }, 3000);
         
         const paymentInfo = {
           transactionId: paymentIntent.id,
@@ -104,11 +101,14 @@ const CheckoutForm = ({ campId }) => {
             position: "center",
             icon: "success",
             title: "Payment Successful",
-            text: `Transaction Id: ${transactionId}`,
+            text: `Transaction Id: ${paymentIntent.id}`,
             showConfirmButton: true,
             confirmButtonText: "Okay",
             confirmButtonColor: "#3085d6",
-          });
+          })
+          .then(() => {
+            navigate("/dashboard/registered-camps");
+          })
         }
       }
     }
