@@ -20,7 +20,7 @@ const PopularCamps = () => {
     },
   });
 
-  console.log(popularCamps);
+  // console.log(popularCamps);
   if (isLoading) return <Loading />;
 
   return (

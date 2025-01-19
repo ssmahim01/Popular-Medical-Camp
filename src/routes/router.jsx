@@ -16,6 +16,7 @@ import Analytics from "../pages/DashboardPages/Participant/Analytics";
 import ParticipantProfile from "../pages/DashboardPages/Participant/ParticipantProfile";
 import OrganizerRoute from "./OrganizerRoute";
 import RegisteredCamps from "../pages/DashboardPages/Participant/RegisteredCamps";
+import Payment from "../pages/DashboardPages/Participant/Payment";
 
 const router = createBrowserRouter([
     {
@@ -56,15 +57,15 @@ const router = createBrowserRouter([
             },
             {
                 path: "/dashboard/add-camp",
-                element: <OrganizerProfile><AddCamp /></OrganizerProfile>
+                element: <OrganizerRoute><AddCamp /></OrganizerRoute>
             },
             {
                 path: "/dashboard/manage-camps",
-                element: <OrganizerProfile><ManageCamps /></OrganizerProfile>
+                element: <OrganizerRoute><ManageCamps /></OrganizerRoute>
             },
             {
                 path: "/dashboard/update-camp/:campId",
-                element: <OrganizerProfile><UpdateCamp /></OrganizerProfile>
+                element: <OrganizerRoute><UpdateCamp /></OrganizerRoute>
             },
 
             // Participant routes
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/registered-camps",
                 element: <RegisteredCamps />
+            },
+            {
+                path: "/dashboard/payment-page/:campId",
+                element: <Payment />
             }
         ]
     }

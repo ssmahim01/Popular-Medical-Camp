@@ -6,6 +6,8 @@ import Loading from "../../../components/Loading/Loading";
 import { TbCoinTakaFilled } from "react-icons/tb";
 import Swal from "sweetalert2";
 import handleFeedbackModal from "../../../components/FeedbackModal/handleFeedbackModal";
+import { Link } from "react-router-dom";
+import { MdPayment } from "react-icons/md";
 
 const RegisteredCamps = () => {
   const axiosSecure = useAxiosSecure();
@@ -33,6 +35,7 @@ const RegisteredCamps = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
+      cancelButtonText: "Not now",
       confirmButtonText: "Yes, cancel it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
@@ -41,7 +44,6 @@ const RegisteredCamps = () => {
         );
         if (response.data.deletedCount > 0) {
           refetch();
-
           Swal.fire({
             title: "Cancelled!",
             text: "Your registration has been cancelled",
@@ -98,16 +100,21 @@ const RegisteredCamps = () => {
                 </td>
 
                 <td>
-                  {camp?.paymentStatus === "Paid" ? (
-                    <p className="badge badge-success text-white font-bold">
-                      Paid
-                    </p>
+                  {camp?.paymentStatus === "Pending" ? (
+                    <Link to={`/dashboard/payment-page/${camp?._id}`}>
+                      <button className="btn btn-sm text-white bg-emerald-500 font-bold border-none rounded flex gap-2 items-center">
+                        <MdPayment className="text-lg" /> <span>Pay</span>
+                      </button>
+                    </Link>
                   ) : (
                     <button
-                      //   onClick={() => handlePayment(camp)}
-                      className="btn btn-sm text-white bg-emerald-500 font-bold border-none rounded"
+                      className="btn btn-sm text-white bg-emerald-500 font-bold border-none rounded flex gap-2 items-center"
+                      disabled={camp?.paymentStatus === "Paid"}
                     >
-                      Pay
+                      <MdPayment className="text-lg" />{" "}
+                      <span>
+                      Paid
+                      </span>
                     </button>
                   )}
                 </td>
@@ -125,8 +132,8 @@ const RegisteredCamps = () => {
                 </td>
 
                 <td>
-                  {camp?.paymentStatus === "Pending" &&
-                  camp?.confirmationStatus === "Pending" ? (
+                  {camp?.paymentStatus === "Confirmed" &&
+                  camp?.confirmationStatus === "Confirmed" ? (
                     <button
                       onClick={() => handleFeedbackModal(camp, axiosSecure)}
                       className="btn btn-sm bg-purple-600 border-none text-white font-bold"

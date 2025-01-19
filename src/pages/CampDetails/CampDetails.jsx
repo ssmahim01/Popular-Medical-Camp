@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
-import { useAxiosPublic } from "../../hooks/useAxiosPublic";
+import { useAxiosSecure } from "../../hooks/useAxiosSecure";
 import Loading from "../../components/Loading/Loading";
 import Heading from "../../components/Heading/Heading";
 import { MdDateRange, MdLibraryAdd } from "react-icons/md";
@@ -16,7 +16,7 @@ import CampJoinForm from "../../components/CampJoinForm/CampJoinForm";
 const CampDetails = () => {
   const { campId } = useParams();
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const [joinCamp, setJoinCamp] = useState({});
 
   const {
@@ -26,7 +26,7 @@ const CampDetails = () => {
   } = useQuery({
     queryKey: ["camp", campId],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/camp/${campId}`);
+      const res = await axiosSecure.get(`/camp/${campId}`);
       return res.data;
     },
   });
@@ -44,6 +44,7 @@ const CampDetails = () => {
 
     try {
       const participantData = {
+        image: camp?.image,
         campName: camp?.campName,
         campFees: camp?.fees,
         location: camp?.location,
@@ -56,9 +57,9 @@ const CampDetails = () => {
       };
       // console.log(participantData);
 
-      const response = await axiosPublic.post("/participants", participantData);
+      const response = await axiosSecure.post("/participants", participantData);
       if (response.data.insertedId) {
-        await axiosPublic.patch(`/participant-count/${campId}`);
+        await axiosSecure.patch(`/participant-count/${campId}`);
         refetch();
         Swal.fire({
           position: "center",

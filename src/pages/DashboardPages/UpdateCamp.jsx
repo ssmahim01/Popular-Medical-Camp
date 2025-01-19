@@ -159,7 +159,7 @@ return (
                   type="datetime-local"
                   defaultValue={
                     camp?.dateTime
-                      ? new Date(camp?.dateTime).toISOString().slice(0, 16)
+                      ? new Date(camp?.dateTime)
                       : ""
                   }
                   {...register("dateTime", {
