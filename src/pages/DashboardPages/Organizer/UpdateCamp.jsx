@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useAxiosPublic } from "../../hooks/useAxiosPublic";
-import { useAxiosSecure } from "../../hooks/useAxiosSecure";
+import { useAxiosPublic } from "../../../hooks/useAxiosPublic";
+import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 import { useForm } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
-import Loading from "../../components/Loading/Loading";
+import Loading from "../../../components/Loading/Loading";
 import Swal from "sweetalert2";
-import Heading from "../../components/Heading/Heading";
+import Heading from "../../../components/Heading/Heading";
 import { FaEdit } from "react-icons/fa";
 
 const UpdateCamp = () => {

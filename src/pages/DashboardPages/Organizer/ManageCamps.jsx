@@ -1,10 +1,10 @@
-import Heading from "../../components/Heading/Heading";
-import Loading from "../../components/Loading/Loading";
-import useCamps from "../../hooks/useCamps";
+import Heading from "../../../components/Heading/Heading";
+import Loading from "../../../components/Loading/Loading";
+import useCamps from "../../../hooks/useCamps";
 import { Link } from "react-router-dom";
 import { FaTrash } from "react-icons/fa6";
 import { MdEditSquare } from "react-icons/md";
-import { useAxiosSecure } from "../../hooks/useAxiosSecure";
+import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const ManageCamps = () => {

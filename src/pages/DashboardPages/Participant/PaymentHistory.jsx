@@ -8,7 +8,7 @@ import { TbCoinTakaFilled } from "react-icons/tb";
 const PaymentHistory = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const { data: paymentHistory, isPending } = useQuery({
+  const { data: paymentHistory = [], isPending } = useQuery({
     queryKey: ["paymentHistory"],
     queryFn: async () => {
       const response = await axiosSecure.get(`/payment-history/${user?.email}`);

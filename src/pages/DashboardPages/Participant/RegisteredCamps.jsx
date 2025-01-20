@@ -71,7 +71,7 @@ const RegisteredCamps = () => {
               <th>Camp Fees</th>
               <th>Participant Name</th>
               <th>Payment Status</th>
-              <th>Confirmation</th>
+              <th>Confirmation Status</th>
               <th>Feedback</th>
               <th>Cancel</th>
             </tr>
@@ -132,7 +132,7 @@ const RegisteredCamps = () => {
                 </td>
 
                 <td>
-                  {camp?.paymentStatus === "Confirmed" &&
+                  {camp?.paymentStatus === "Paid" &&
                   camp?.confirmationStatus === "Confirmed" ? (
                     <button
                       onClick={() => handleFeedbackModal(camp, axiosSecure)}

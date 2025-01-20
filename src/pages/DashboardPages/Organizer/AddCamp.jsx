@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import Heading from "../../components/Heading/Heading";
+import Heading from "../../../components/Heading/Heading";
 import Swal from "sweetalert2";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import { useAxiosPublic } from "../../hooks/useAxiosPublic";
-import { useAxiosSecure } from "../../hooks/useAxiosSecure";
+import { useAxiosPublic } from "../../../hooks/useAxiosPublic";
+import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 
 const AddCamp = () => {
   const axiosPublic = useAxiosPublic();

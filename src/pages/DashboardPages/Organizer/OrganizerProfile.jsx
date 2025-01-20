@@ -1,9 +1,9 @@
 import { useState } from "react";
-import useAuth from "../../hooks/useAuth";
-import { useAxiosSecure } from "../../hooks/useAxiosSecure";
+import useAuth from "../../../hooks/useAuth";
+import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import Loading from "../../components/Loading/Loading";
-import { useAxiosPublic } from "../../hooks/useAxiosPublic";
+import Loading from "../../../components/Loading/Loading";
+import { useAxiosPublic } from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 
 const OrganizerProfile = () => {
