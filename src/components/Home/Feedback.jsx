@@ -17,7 +17,7 @@ const Feedback = () => {
   if (isPending) return <Loading />;
 
   return (
-    <div className="pb-8">
+    <div className="pb-4">
       <div className="lg:w-4/5 w-11/12 mx-auto">
         <Heading title={"Participants Feedback"} />
 

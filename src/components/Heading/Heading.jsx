@@ -1,7 +1,7 @@
 const Heading = ({ title }) => {
   return (
     <div>
-      <h2 className="text-center md:text-4xl text-2xl font-extrabold mb-6">
+      <h2 className="md:text-4xl text-3xl font-extrabold mb-5">
         {title}
       </h2>
     </div>

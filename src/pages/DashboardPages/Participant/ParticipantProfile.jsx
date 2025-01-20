@@ -197,17 +197,17 @@ const ParticipantProfile = () => {
 
               <div className="my-6 flex gap-3 justify-center items-center">
                 <div className="form-control">
-                  <button className="btn bg-teal-600 border-none text-white/90 rounded-md font-bold flex gap-2 items-center px-5">
-                    <span className="text-lg">Save Changes</span> <FaExchangeAlt className="text-xl" />
+                  <button className="btn bg-teal-600 border-none text-white/90 rounded-md font-bold px-5">
+                    <span className="text-lg">Save Changes</span>
                   </button>
                 </div>
 
                 <div>
                   <button
-                    className="btn bg-rose-500 text-white font-bold flex gap-2 items-center px-6"
+                    className="btn bg-rose-500 text-white font-bold px-6"
                     onClick={() => setUpdate(false)}
                   >
-                    <span className="text-lg">Cancel</span> <GiCancel className="text-xl" />
+                    <span className="text-lg">Cancel</span>
                   </button>
                 </div>
               </div>

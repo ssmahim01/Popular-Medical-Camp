@@ -1,5 +1,6 @@
 import Banner from "../../components/Home/Banner";
 import Feedback from "../../components/Home/Feedback";
+import OurImpact from "../../components/Home/OurImpact";
 import PopularCamps from "../../components/Home/PopularCamps";
 
 const Home = () => {
@@ -13,6 +14,9 @@ const Home = () => {
 
            {/* Feedback component */}
            <Feedback />
+
+           {/* Our Impact component */}
+           <OurImpact />
         </div>
     );
 };
