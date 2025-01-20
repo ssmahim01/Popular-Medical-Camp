@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-const handleFeedbackModal = async (camp, axiosSecure) => {
+const handleFeedbackModal = async (camp, user, axiosSecure) => {
   // console.table(camp);
   Swal.fire({
     title: `Feedback for ${camp?.campName}`,
@@ -31,37 +31,40 @@ const handleFeedbackModal = async (camp, axiosSecure) => {
       }
     },
   })
-  .then(async (result) => {
-    if (result.isConfirmed) {
-      const { rating, feedback } = result.value;
-      try {
-        const response = await axiosSecure.post("/feedback-data", {
-          campId: camp?._id,
-          participantEmail: camp?.participantEmail,
-          rating,
-          feedback,
-        });
+    .then(async (result) => {
+      if (result.isConfirmed) {
+        const { rating, feedback } = result.value;
+        try {
+          const response = await axiosSecure.post("/feedback-data", {
+            campId: camp?._id,
+            participantImage: user?.photoURL,
+            participantName: camp?.participantName,
+            participantEmail: camp?.participantEmail,
+            rating,
+            feedback,
+            date: new Date()
+          });
 
-        if (response.data.insertedId) {
+          if (response.data.insertedId) {
+            Swal.fire({
+              title: "Thank You!",
+              text: "Your feedback has been successfully submitted",
+              icon: "success",
+              timer: 3000,
+              showConfirmButton: false,
+            });
+          }
+        } catch (error) {
           Swal.fire({
-            title: "Success!",
-            text: "Your feedback has been successfully submitted",
-            icon: "success",
+            title: "Error!",
+            text: "Failed to submit your feedback",
+            icon: "error",
             timer: 3000,
             showConfirmButton: false,
           });
         }
-      } catch (error) {
-        Swal.fire({
-          title: "Error!",
-          text: "Failed to submit your feedback",
-          icon: "error",
-          timer: 3000,
-          showConfirmButton: false,
-        });
       }
-    }
-  });
+    });
 };
 
 export default handleFeedbackModal;

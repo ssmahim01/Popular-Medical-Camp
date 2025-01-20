@@ -135,7 +135,7 @@ const RegisteredCamps = () => {
                   {camp?.paymentStatus === "Paid" &&
                   camp?.confirmationStatus === "Confirmed" ? (
                     <button
-                      onClick={() => handleFeedbackModal(camp, axiosSecure)}
+                      onClick={() => handleFeedbackModal(camp, user, axiosSecure)}
                       className="btn btn-sm bg-purple-600 border-none text-white font-bold"
                     >
                       Feedback

@@ -23,21 +23,34 @@ const ManageRegisteredCamps = () => {
   const handleConfirmStatus = async (participant) => {
     // console.log(participant);
     try {
-      const participantId = participant?._id;
-      const response = await axiosSecure.patch(
-        `/confirmation-status/${participantId}`
-      );
+      Swal.fire({
+        title: "Are you sure?",
+        text: "Confirm this participant?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Not now",
+        confirmButtonText: "Yes, confirm",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const participantId = participant?._id;
+          const response = await axiosSecure.patch(
+            `/confirmation-status/${participantId}`
+          );
 
-      if (response.data.modifiedCount > 0) {
-        refetch();
-        Swal.fire({
-          title: "Updated!",
-          text: "Updated confirmation status",
-          icon: "success",
-          timer: 3000,
-          showConfirmButton: false,
-        });
-      }
+          if (response.data.modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Updated!",
+              text: "Updated confirmation status",
+              icon: "success",
+              timer: 3000,
+              showConfirmButton: false,
+            });
+          }
+        }
+      });
     } catch (error) {
       // console.log(error.message);
       Swal.fire({

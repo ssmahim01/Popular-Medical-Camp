@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useAxiosPublic } from "../../hooks/useAxiosPublic";
 import Loading from "../Loading/Loading";
 import Heading from "../Heading/Heading";
-import { FaUserDoctor } from "react-icons/fa6";
+import { FaUserDoctor, FaUsers } from "react-icons/fa6";
 import { IoLocation, IoTimer } from "react-icons/io5";
 import { MdDateRange, MdReadMore } from "react-icons/md";
 import { TbCoinTakaFilled } from "react-icons/tb";
@@ -67,9 +67,9 @@ const PopularCamps = () => {
                     </span>{" "}
                     {camp?.location}
                   </p>
-                  <p className="text-gray-700 font-semibold flex gap-1 items-center">
-                    <span className="text-gray-900 font-bold">
-                      Participants:{" "}
+                  <p className="text-gray-700 font-semibold flex gap-2 items-center">
+                    <span>
+                      <FaUsers className="text-lg" />
                     </span>{" "}
                     {camp?.participantCount}
                   </p>
