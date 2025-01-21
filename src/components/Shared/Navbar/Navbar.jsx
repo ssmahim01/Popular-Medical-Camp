@@ -5,9 +5,11 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { TbLogout2 } from "react-icons/tb";
 import "./Navbar.css";
 import Swal from "sweetalert2";
+import useOrganizer from "../../../hooks/useOrganizer";
 
 const Navbar = () => {
   const { user, logoutUser } = useAuth();
+  const [organizer] = useOrganizer();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -66,7 +68,7 @@ const Navbar = () => {
                 <h4 className="text-gray-600 font-bold">
                   {user?.displayName}
                 </h4>
-                <NavLink to="/dashboard">Dashboard</NavLink>
+                <NavLink to={`${organizer ? "/dashboard/organizer-profile" : "/dashboard/analytics"}`}>Dashboard</NavLink>
                 <button
                   onClick={handleLogout}
                   className="mt-2 text-white text-lg btn bg-rose-500 border-none flex gap-2 items-center rounded-md"

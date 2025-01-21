@@ -11,7 +11,7 @@ const Payment = () => {
 
   return (
     <div className="py-6">
-     <Heading title={"Payment For Confirmation"} />
+     <Heading title={"Payment"} center={true} />
 
       <Elements stripe={stripePromise}>
         {/* Payment Form */}

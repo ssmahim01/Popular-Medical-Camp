@@ -3,7 +3,7 @@ import Heading from "../../components/Heading/Heading";
 import { useState } from "react";
 import { IoLocation, IoTimer } from "react-icons/io5";
 import { MdDateRange, MdReadMore } from "react-icons/md";
-import { FaUserDoctor } from "react-icons/fa6";
+import { FaUserDoctor, FaUsers } from "react-icons/fa6";
 import { useAxiosPublic } from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 
@@ -13,9 +13,7 @@ const AvailableCamps = () => {
   const axiosPublic = useAxiosPublic();
   const [layout, setLayout] = useState("three-column");
 
-  const {
-    data: camps = [],
-  } = useQuery({
+  const { data: camps = [] } = useQuery({
     queryKey: ["camps", search, sorted],
     queryFn: async () => {
       const res = await axiosPublic.get(
@@ -69,11 +67,16 @@ const AvailableCamps = () => {
       {/* Camp Cards */}
       <div
         className={`grid gap-6 ${
-          layout === "three-column" ? "lg:grid-cols-3" : "lg:grid-cols-2 md:grid-cols-1"
+          layout === "three-column"
+            ? "lg:grid-cols-3"
+            : "lg:grid-cols-2 md:grid-cols-1"
         } md:grid-cols-2 grid-cols-1 gap-7`}
       >
         {camps.map((camp) => (
-          <div key={camp?._id} className="card bg-base-100 shadow-md rounded-lg">
+          <div
+            key={camp?._id}
+            className="card bg-base-100 shadow-md rounded-lg"
+          >
             <img
               src={camp?.image}
               alt={camp?.campName}
@@ -105,14 +108,16 @@ const AvailableCamps = () => {
                   </span>{" "}
                   {camp?.location}
                 </p>
-                <p className="text-gray-700 font-semibold flex gap-1 items-center">
-                  <span className="text-gray-900 font-bold">Participant: </span>{" "}
+                <p className="text-gray-700 font-semibold flex gap-2 items-center">
+                  <span>
+                    <FaUsers className="text-lg" />
+                  </span>{" "}
                   {camp?.participantCount}
                 </p>
               </div>
 
               <p className="text-gray-600 font-medium">
-                {camp?.description.slice(0, 80)}...
+                {camp?.description.slice(0, 70)}...
               </p>
 
               <div className="flex justify-between items-center">

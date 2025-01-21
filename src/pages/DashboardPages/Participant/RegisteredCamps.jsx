@@ -10,10 +10,37 @@ import { Link } from "react-router-dom";
 import { MdPayment } from "react-icons/md";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import { useState } from "react";
+import Pagination from "../../../components/Pagination/Pagination";
 
 const RegisteredCamps = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [search, setSearch] = useState("");
   const axiosSecure = useAxiosSecure();
+  const { data: count, isFetched } = useQuery({
+    queryKey: ["count"],
+    queryFn: async () => {
+      const response = await axiosSecure.get("/joined-camps-count");
+      return response.data.count;
+    },
+    enabled: true,
+  });
+
+  const totalPages = count && count > 0 ? Math.ceil(count / itemsPerPage) : 1;
+  const pages = isFetched ? [...Array(totalPages).keys()] : [];
+
+  const handlePrev = () => {
+    if (currentPage > 0) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages - 1) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
   const { user } = useAuth();
 
   const {
@@ -21,10 +48,10 @@ const RegisteredCamps = () => {
     refetch,
     isPending,
   } = useQuery({
-    queryKey: ["joinedCamps", user?.email, search],
+    queryKey: ["joinedCamps", user?.email, search, currentPage, itemsPerPage],
     queryFn: async () => {
       const response = await axiosSecure.get(
-        `/registered-camps/${user?.email}?search=${search}`
+        `/registered-camps/${user?.email}?search=${search}&page=${currentPage}&size=${itemsPerPage}`
       );
       return response.data;
     },
@@ -59,7 +86,7 @@ const RegisteredCamps = () => {
     });
   };
 
-  if (isPending && !search) return <Loading />;
+  if (isPending && !search && !isFetched) return <Loading />;
 
   return (
     <div className="py-6">
@@ -166,6 +193,14 @@ const RegisteredCamps = () => {
           </tbody>
         </table>
       </div>
+
+      <Pagination
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        pages={pages}
+        handlePrev={handlePrev}
+        handleNext={handleNext}
+      />
     </div>
   );
 };

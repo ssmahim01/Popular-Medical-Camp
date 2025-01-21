@@ -83,8 +83,7 @@ const PopularCamps = () => {
                     {camp?.professionalName}
                   </p>
 
-                  <p className="text-gray-700 font-semibold flex gap-2 items-center">
-                    <span className="text-gray-800 font-bold">Camp Fees: </span>
+                  <p className="text-gray-700 font-semibold">
                     <span className="flex gap-1 items-center">
                       <TbCoinTakaFilled className="text-xl" /> {camp?.fees}
                     </span>
