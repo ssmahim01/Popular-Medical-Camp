@@ -7,20 +7,50 @@ import { FaTrash } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import SearchBar from "../../../components/SearchBar/SearchBar";
+import Pagination from "../../../components/Pagination/Pagination";
 
 const ManageRegisteredCamps = () => {
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const axiosSecure = useAxiosSecure();
+  const { data: count, isFetched } = useQuery({
+    queryKey: ["count"],
+    queryFn: async () => {
+      const response = await axiosSecure.get("/participants-count");
+      return response.data.count;
+    },
+    enabled: true,
+  });
+
+  const totalPages = count && count > 0 ? Math.ceil(count / itemsPerPage) : 1;
+  const pages = isFetched ? [...Array(totalPages).keys()] : [];
+
+  const handlePrev = () => {
+    if (currentPage > 0) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages - 1) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
   const {
     data: participantsData = [],
     refetch,
     isPending,
   } = useQuery({
-    queryKey: ["participantsData", search],
+    queryKey: ["participantsData", search, currentPage, itemsPerPage],
     queryFn: async () => {
-      const response = await axiosSecure.get(`/participants?search=${search}`);
+      const response = await axiosSecure.get(
+        `/participants?search=${search}&page=${currentPage}&size=${itemsPerPage}`
+      );
       return response.data;
     },
+    enabled: isFetched && totalPages > 0,
   });
 
   const handleConfirmStatus = async (participant) => {
@@ -101,12 +131,17 @@ const ManageRegisteredCamps = () => {
     });
   };
 
-  if (isPending && !search) return <Loading />;
+  if (isPending && !search && !isFetched) return <Loading />;
 
   return (
     <div className="py-6">
       <Heading title={"Manage Registered Camps"} />
-      <SearchBar placeholderText={"Search by Participant Name, Camp Name, Fees or Statuses..."} onSearch={setSearch} />
+      <SearchBar
+        placeholderText={
+          "Search by Participant Name, Camp Name, Fees or Statuses..."
+        }
+        onSearch={setSearch}
+      />
 
       <div className="overflow-x-auto bg-base-100 bg-opacity-80 shadow-md md:rounded-lg">
         <table className="table w-full">
@@ -196,6 +231,14 @@ const ManageRegisteredCamps = () => {
           </tbody>
         </table>
       </div>
+
+      <Pagination
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        pages={pages}
+        handlePrev={handlePrev}
+        handleNext={handleNext}
+      />
     </div>
   );
 };

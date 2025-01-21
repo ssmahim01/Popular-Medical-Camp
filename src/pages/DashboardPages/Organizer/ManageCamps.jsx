@@ -7,10 +7,36 @@ import { MdEditSquare } from "react-icons/md";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import SearchBar from "../../../components/SearchBar/SearchBar";
+import { useQuery } from "@tanstack/react-query";
+import Pagination from "../../../components/Pagination/Pagination";
 
 const ManageCamps = () => {
-  const [camps, refetch, isPending, search, setSearch] = useCamps();
+  const [camps, refetch, isPending, search, setSearch, currentPage, setCurrentPage, itemsPerPage] = useCamps();
   const axiosSecure = useAxiosSecure();
+  const { data: count, isFetched } = useQuery({
+    queryKey: ["count"],
+    queryFn: async () => {
+      const response = await axiosSecure.get("/camps-count");
+      return response.data.count;
+    },
+    enabled: true,
+  });
+
+  const totalPages = count && count > 0 ? Math.ceil(count / itemsPerPage) : 1;
+  const pages = isFetched ? [...Array(totalPages).keys()] : [];
+
+  const handlePrev = () => {
+    if (currentPage > 0) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages - 1) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
   
   const handleDeleteCamp = (campId) => {
       Swal.fire({
@@ -39,7 +65,7 @@ const ManageCamps = () => {
     });
   };
 
-  if (isPending && !search) return <Loading />;
+  if (isPending && !search && !isFetched) return <Loading />;
 
   return (
     <div className="py-6">
@@ -111,6 +137,14 @@ const ManageCamps = () => {
           </tbody>
         </table>
       </div>
+
+      <Pagination
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        pages={pages}
+        handlePrev={handlePrev}
+        handleNext={handleNext}
+      />
     </div>
   );
 };

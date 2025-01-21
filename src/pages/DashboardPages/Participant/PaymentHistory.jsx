@@ -6,20 +6,47 @@ import Loading from "../../../components/Loading/Loading";
 import { TbCoinTakaFilled } from "react-icons/tb";
 import { useState } from "react";
 import SearchBar from "../../../components/SearchBar/SearchBar";
+import Pagination from "../../../components/Pagination/Pagination";
 
 const PaymentHistory = () => {
-  const axiosSecure = useAxiosSecure();
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [search, setSearch] = useState("");
+  const axiosSecure = useAxiosSecure();
+  const { data: count, isFetched } = useQuery({
+    queryKey: ["count"],
+    queryFn: async () => {
+      const response = await axiosSecure.get("/history-count");
+      return response.data.count;
+    },
+    enabled: true,
+  });
+
+  const totalPages = count && count > 0 ? Math.ceil(count / itemsPerPage) : 1;
+  const pages = isFetched ? [...Array(totalPages).keys()] : [];
+
+  const handlePrev = () => {
+    if (currentPage > 0) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages - 1) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
   const { user } = useAuth();
   const { data: paymentHistory = [], isPending } = useQuery({
-    queryKey: ["paymentHistory", search],
+    queryKey: ["paymentHistory", search, currentPage, itemsPerPage],
     queryFn: async () => {
-      const response = await axiosSecure.get(`/payment-history/${user?.email}?search=${search}`);
+      const response = await axiosSecure.get(`/payment-history/${user?.email}?search=${search}&page=${currentPage}&size=${itemsPerPage}`);
       return response.data;
     },
   });
 
-  if (isPending && !search) return <Loading />;
+  if (isPending && !search && !isFetched) return <Loading />;
 
   return (
     <div className="py-6">
@@ -77,6 +104,14 @@ const PaymentHistory = () => {
           </tbody>
         </table>
       </div>
+
+      <Pagination
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        pages={pages}
+        handlePrev={handlePrev}
+        handleNext={handleNext}
+      />
     </div>
   );
 };
