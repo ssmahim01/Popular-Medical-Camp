@@ -4,23 +4,27 @@ import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../components/Loading/Loading";
 import { TbCoinTakaFilled } from "react-icons/tb";
+import { useState } from "react";
+import SearchBar from "../../../components/SearchBar/SearchBar";
 
 const PaymentHistory = () => {
   const axiosSecure = useAxiosSecure();
+  const [search, setSearch] = useState("");
   const { user } = useAuth();
   const { data: paymentHistory = [], isPending } = useQuery({
-    queryKey: ["paymentHistory"],
+    queryKey: ["paymentHistory", search],
     queryFn: async () => {
-      const response = await axiosSecure.get(`/payment-history/${user?.email}`);
+      const response = await axiosSecure.get(`/payment-history/${user?.email}?search=${search}`);
       return response.data;
     },
   });
 
-  if (isPending) return <Loading />;
+  if (isPending && !search) return <Loading />;
 
   return (
     <div className="py-6">
       <Heading title={"Payment History"} />
+      <SearchBar placeholderText={"Search by Camp Name, Fees or Statuses..."} onSearch={setSearch} />
 
       <div className="overflow-x-auto bg-base-100 bg-opacity-80 shadow-md md:rounded-lg">
         <table className="table w-full">

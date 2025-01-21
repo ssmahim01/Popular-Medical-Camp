@@ -6,9 +6,10 @@ import { FaTrash } from "react-icons/fa6";
 import { MdEditSquare } from "react-icons/md";
 import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import SearchBar from "../../../components/SearchBar/SearchBar";
 
 const ManageCamps = () => {
-  const [camps, refetch, isPending] = useCamps();
+  const [camps, refetch, isPending, search, setSearch] = useCamps();
   const axiosSecure = useAxiosSecure();
   
   const handleDeleteCamp = (campId) => {
@@ -38,11 +39,12 @@ const ManageCamps = () => {
     });
   };
 
-  if (isPending) return <Loading />;
+  if (isPending && !search) return <Loading />;
 
   return (
     <div className="py-6">
       <Heading title={"Manage Camps"} />
+      <SearchBar placeholderText={"Search by Camp Name, date or Healthcare..."} onSearch={setSearch} />
 
       <div className="overflow-x-auto bg-base-100 bg-opacity-80 shadow-md md:rounded-lg">
         <table className="table w-full">

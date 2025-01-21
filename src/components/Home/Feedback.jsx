@@ -65,7 +65,7 @@ const Feedback = () => {
                 </div>
 
                 <p className="text-gray-600 font-medium mt-2">
-                  {feedback?.feedback}
+                  {feedback?.feedback.slice(0, 70)}...
                 </p>
               </div>
             </div>

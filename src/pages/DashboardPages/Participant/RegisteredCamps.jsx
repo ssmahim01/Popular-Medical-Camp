@@ -8,8 +8,11 @@ import Swal from "sweetalert2";
 import handleFeedbackModal from "../../../components/FeedbackModal/handleFeedbackModal";
 import { Link } from "react-router-dom";
 import { MdPayment } from "react-icons/md";
+import SearchBar from "../../../components/SearchBar/SearchBar";
+import { useState } from "react";
 
 const RegisteredCamps = () => {
+  const [search, setSearch] = useState("");
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
@@ -18,10 +21,10 @@ const RegisteredCamps = () => {
     refetch,
     isPending,
   } = useQuery({
-    queryKey: ["joinedCamps", user?.email],
+    queryKey: ["joinedCamps", user?.email, search],
     queryFn: async () => {
       const response = await axiosSecure.get(
-        `/registered-camps/${user?.email}`
+        `/registered-camps/${user?.email}?search=${search}`
       );
       return response.data;
     },
@@ -56,11 +59,12 @@ const RegisteredCamps = () => {
     });
   };
 
-  if (isPending) return <Loading />;
+  if (isPending && !search) return <Loading />;
 
   return (
     <div className="py-6">
       <Heading title={"Registered Camps"} />
+      <SearchBar placeholderText={"Search by Camp Name, Fees or Payment..."} onSearch={setSearch} />
 
       <div className="overflow-x-auto bg-base-100 bg-opacity-80 shadow-md md:rounded-lg">
         <table className="table w-full">

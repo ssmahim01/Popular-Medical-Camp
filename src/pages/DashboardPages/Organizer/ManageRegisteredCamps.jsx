@@ -5,17 +5,20 @@ import Loading from "../../../components/Loading/Loading";
 import { TbCoinTakaFilled } from "react-icons/tb";
 import { FaTrash } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import { useState } from "react";
+import SearchBar from "../../../components/SearchBar/SearchBar";
 
 const ManageRegisteredCamps = () => {
+  const [search, setSearch] = useState("");
   const axiosSecure = useAxiosSecure();
   const {
     data: participantsData = [],
     refetch,
     isPending,
   } = useQuery({
-    queryKey: ["participantsData"],
+    queryKey: ["participantsData", search],
     queryFn: async () => {
-      const response = await axiosSecure.get("/participants");
+      const response = await axiosSecure.get(`/participants?search=${search}`);
       return response.data;
     },
   });
@@ -98,11 +101,12 @@ const ManageRegisteredCamps = () => {
     });
   };
 
-  if (isPending) return <Loading />;
+  if (isPending && !search) return <Loading />;
 
   return (
     <div className="py-6">
       <Heading title={"Manage Registered Camps"} />
+      <SearchBar placeholderText={"Search by Participant Name, Camp Name, Fees or Statuses..."} onSearch={setSearch} />
 
       <div className="overflow-x-auto bg-base-100 bg-opacity-80 shadow-md md:rounded-lg">
         <table className="table w-full">

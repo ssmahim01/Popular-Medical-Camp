@@ -67,11 +67,11 @@ const AddCamp = () => {
 
   return (
     <>
-      <div>
+      <div className="lg:w-11/12 w-full mx-auto lg:my-8 my-6">
         <Heading title={"Add A Camp"} />
 
         {/* Form start */}
-        <div className="lg:w-11/12 w-full mx-auto lg:my-8 my-6 bg-base-100 bg-opacity-50 p-8 rounded-box shadow-md">
+        <div className="bg-base-100 bg-opacity-50 p-8 rounded-box shadow-md">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Camp Name */}
             <div className="form-control">

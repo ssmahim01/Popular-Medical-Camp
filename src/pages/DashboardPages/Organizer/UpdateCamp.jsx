@@ -20,20 +20,24 @@ const UpdateCamp = () => {
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
-  const { data: camp = {}, isLoading, refetch } = useQuery({
-      queryKey: ["camp", campId],
-      queryFn: async () => {
-          const response = await axiosPublic.get(`/camp/${campId}`);
+  const {
+    data: camp = {},
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["camp", campId],
+    queryFn: async () => {
+      const response = await axiosPublic.get(`/camp/${campId}`);
       return response.data;
     },
   });
-  
+
   const imageHostingAPI = import.meta.env.VITE_IMGBB_API_KEY;
   const imageHostingKey = `https://api.imgbb.com/1/upload?key=${imageHostingAPI}`;
-  
+
   const onSubmit = async (data) => {
     try {
-        // Upload Image to imgBB
+      // Upload Image to imgBB
       const formData = new FormData();
       formData.append("image", data.image[0]);
       const imgResponse = await axiosPublic.post(imageHostingKey, formData, {
@@ -45,8 +49,8 @@ const UpdateCamp = () => {
 
         // Prepare Camp updated Data For The Database
         const updateData = {
-            ...data,
-            image: imageURL,
+          ...data,
+          image: imageURL,
         };
 
         // Put Camp Data In The Database
@@ -79,13 +83,13 @@ const UpdateCamp = () => {
   };
 
   if (isLoading) return <Loading />;
-return (
+  return (
     <>
-      <div>
+      <div className="lg:w-11/12 w-full mx-auto lg:my-8 my-6">
         <Heading title={"Update Camp"} />
 
         {/* Form start */}
-        <div className="lg:w-11/12 w-full mx-auto lg:my-8 my-6 bg-base-100 bg-opacity-60 p-8 rounded-box shadow-md">
+        <div className="bg-base-100 bg-opacity-60 p-8 rounded-box shadow-md">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Camp Name */}
             <div className="form-control">
@@ -104,7 +108,7 @@ return (
             </div>
 
             {/* Image */}
-              <div className="space-y-2">
+            <div className="space-y-2">
               {camp?.image && (
                 <div className="mt-3">
                   <img
@@ -114,23 +118,25 @@ return (
                   />
                 </div>
               )}
-              
-            <div className="form-control w-full pb-1">
-              <label className="label-text font-bold">Select Image</label>
 
-              <input
-                type="file"
-                {...register("image", { required: "Please provide an image" })}
-                className="file-input file-input-bordered file-input-accent text-gray-700 font-semibold h-10 lg:w-1/3 md:w-3/4 w-full"
-              />
+              <div className="form-control w-full pb-1">
+                <label className="label-text font-bold">Select Image</label>
 
-              {errors.image && (
-                <p className="text-rose-500 font-semibold mt-2">
-                  {errors.image.message}
-                </p>
-              )}
-            </div>
+                <input
+                  type="file"
+                  {...register("image", {
+                    required: "Please provide an image",
+                  })}
+                  className="file-input file-input-bordered file-input-accent text-gray-700 font-semibold h-10 lg:w-1/3 md:w-3/4 w-full"
+                />
+
+                {errors.image && (
+                  <p className="text-rose-500 font-semibold mt-2">
+                    {errors.image.message}
+                  </p>
+                )}
               </div>
+            </div>
 
             <div className="lg:flex gap-4 lg:items-center space-y-4 lg:space-y-0 *:w-full">
               {/* Camp Fees */}
@@ -159,7 +165,7 @@ return (
                   type="datetime-local"
                   defaultValue={
                     camp?.dateTime
-                      ? new Date(camp?.dateTime)
+                      ? new Date(camp?.dateTime).toISOString().slice(0, 16)
                       : ""
                   }
                   {...register("dateTime", {
