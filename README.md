@@ -1,3 +1,7 @@
+<div align="center">
+  <img width="100%" height="340" src="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-ssmahim01/blob/main/public/medical-camp-management-system.png"  />
+</div>
+
 # Popular Medical Camp
 
 A web application for managing participant registrations, payments, and confirmation statuses for camp events. The platform is designed for organizers to efficiently manage and track participants.
