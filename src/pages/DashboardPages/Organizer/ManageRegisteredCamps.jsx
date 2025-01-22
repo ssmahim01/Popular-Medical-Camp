@@ -236,7 +236,7 @@ const ManageRegisteredCamps = () => {
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
         pages={pages}
-        count={count}
+        count={participantsData.length}
         handlePrev={handlePrev}
         handleNext={handleNext}
       />

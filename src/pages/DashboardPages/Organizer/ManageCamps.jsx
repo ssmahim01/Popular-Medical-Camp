@@ -142,7 +142,7 @@ const ManageCamps = () => {
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
         pages={pages}
-        count={count}
+        count={camps.length}
         handlePrev={handlePrev}
         handleNext={handleNext}
       />

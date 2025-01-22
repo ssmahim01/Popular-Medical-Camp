@@ -10,8 +10,10 @@ import useOrganizer from "../../hooks/useOrganizer";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { TbLogout2 } from "react-icons/tb";
+import { useState } from "react";
 
 const Dashboard = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [organizer] = useOrganizer();
   const { logoutUser } = useAuth();
   const navigate = useNavigate();
@@ -30,22 +32,28 @@ const Dashboard = () => {
     navigate("/");
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <div className="flex lg:flex-row flex-col">
-      {/* Dashboard Side bar */}
-      <div className="p-4 lg:w-72 lg:min-h-screen bg-violet-300">
-        <div className="lg:ml-3 flex flex-row gap-2 items-center md:mb-6 mb-3">
+      {/* Sidebar */}
+      <div
+        className={`fixed lg:relative top-0 left-0 z-40 min-h-screen w-64 bg-violet-300 transition-transform transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } lg:translate-x-0 lg:w-72 lg:min-h-screen`}
+      >
+        <div className="p-4 flex items-center gap-2">
           <img
             className="w-9 h-9 object-cover"
             src={logo}
-            alt="Logo of Popular Medical"
+            alt="Popular Medical Logo"
           />
-          <h2 className="text-xl text-gray-800 font-extrabold">
-            Popular Medical
-          </h2>
+          <h2 className="text-xl text-gray-800 font-extrabold">Popular Medical</h2>
         </div>
 
-        <ul className="menu *:font-bold lg:flex-col flex-row gap-4 flex-wrap lg:space-y-5">
+        <ul className="menu *:font-bold flex flex-col space-y-7 p-4">
           {organizer ? (
             <>
               <NavLink to="/dashboard/organizer-profile">
@@ -53,26 +61,23 @@ const Dashboard = () => {
                   <FaUserCircle className="text-lg" /> Organizer Profile
                 </h3>
               </NavLink>
-
               <NavLink to="/dashboard/add-camp">
                 <h3 className="flex gap-2 items-center">
                   <IoIosAddCircle className="text-lg" /> Add A Camp
                 </h3>
               </NavLink>
-
               <NavLink to="/dashboard/manage-camps">
                 <h3 className="flex gap-2 items-center">
                   <FaEdit className="text-lg" /> Manage Camps
                 </h3>
               </NavLink>
-
               <NavLink to="/dashboard/manage-registered-camps">
                 <h3 className="flex gap-2 items-center">
                   <MdManageSearch className="text-lg" /> Manage Registered Camps
                 </h3>
               </NavLink>
 
-              <div className="md:divider hidden"></div>
+              <div className="divider"></div>
             </>
           ) : (
             <>
@@ -81,55 +86,57 @@ const Dashboard = () => {
                   <IoAnalyticsSharp className="text-lg" /> Analytics
                 </h3>
               </NavLink>
-
               <NavLink to="/dashboard/participant-profile">
                 <h3 className="flex gap-2 items-center">
                   <BsFillPersonFill className="text-lg" /> Participant Profile
                 </h3>
               </NavLink>
-
               <NavLink to="/dashboard/registered-camps">
                 <h3 className="flex gap-2 items-center">
                   <MdAssignmentAdd className="text-lg" /> Registered Camps
                 </h3>
               </NavLink>
-
               <NavLink to="/dashboard/payment-history">
                 <h3 className="flex gap-2 items-center">
                   <FaHistory className="text-lg" /> Payment History
                 </h3>
               </NavLink>
-              <div className="md:divider hidden"></div>
+
+              <div className="divider"></div>
             </>
           )}
-
           <NavLink to="/">
             <h3 className="flex gap-2 items-center">
-              <FaHome className="text-lg" />
-              Home Page
+              <FaHome className="text-lg" /> Home Page
             </h3>
           </NavLink>
-
           <NavLink to="/available-camps">
             <h3 className="flex gap-2 items-center">
-              <MdMenuBook className="text-lg" />
-              Available Camps
+              <MdMenuBook className="text-lg" /> Available Camps
             </h3>
           </NavLink>
-
-          <div className="-mt-1">
           <button
             onClick={handleLogout}
-            className="text-white w-full lg:btn-md btn-md md:btn-sm md:text-base lg:text-lg btn bg-rose-500 border-none flex gap-2 items-center rounded-md"
+            className="text-white w-full btn bg-rose-500 border-none flex gap-2 items-center rounded-md"
           >
-            <TbLogout2 className="lg:text-xl text-xl md:text-lg font-bold" /> Logout
+            <TbLogout2 className="text-xl font-bold" /> Logout
           </button>
-          </div>
         </ul>
       </div>
 
-      {/* Dashboard Pages */}
-      <div className="min-h-[calc(100vh-200px)] md:p-8 p-4 flex-1 bg-slate-100">
+      {/* Sidebar Toggle Button */}
+      <button
+        onClick={toggleSidebar}
+        className="lg:hidden fixed top-4 right-4 z-50 bg-violet-300 p-2 rounded-md shadow-lg"
+      >
+        <MdMenuBook className="text-2xl" />
+      </button>
+
+      {/* Content */}
+      <div
+        className="min-h-[calc(100vh-200px)] md:p-8 p-4 flex-1 bg-slate-100"
+        onClick={() => isSidebarOpen && setIsSidebarOpen(false)}
+      >
         <Outlet />
       </div>
     </div>

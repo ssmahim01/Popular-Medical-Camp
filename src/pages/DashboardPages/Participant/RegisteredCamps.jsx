@@ -198,7 +198,7 @@ const RegisteredCamps = () => {
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
         pages={pages}
-        count={count}
+        count={joinedCamps.length}
         handlePrev={handlePrev}
         handleNext={handleNext}
       />

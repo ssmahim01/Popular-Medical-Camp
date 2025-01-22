@@ -109,7 +109,7 @@ const PaymentHistory = () => {
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
         pages={pages}
-        count={count}
+        count={paymentHistory.length}
         handlePrev={handlePrev}
         handleNext={handleNext}
       />
