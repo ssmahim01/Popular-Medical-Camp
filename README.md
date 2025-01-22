@@ -32,12 +32,12 @@ A web application for managing participant registrations, payments, and confirma
 ---
 
 ## Technologies Used
-- **Frontend:** React, Tailwind CSS, Daisy UI
+- **Frontend:** React, Tailwind CSS, Daisy UI, TailGrids
 - **State Management:** React Query
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
 - **Authentication:** Custom middleware for token-based security
-- **Hosting:** Vercel (Backend), Firebase (Front-end)
+- **Hosting:** Firebase (Front-end), Vercel (Backend)
 
 ---
 
@@ -50,7 +50,9 @@ To set up the project locally, follow these steps:
 
 ### Installation
 1. Clone this repository in your local folder then run this command in bash or command prompt <b>npm install</b>
-2. Do not forget to create a <b>.env.local</b> for keep secret values such as Firebase, imgBB API and Server URL. 
+2. Do not forget to create an <b>.env.local</b> file for keep secret values such as Firebase, imgBB API and Server URL. 
+
+---
 
 # Setup
 
