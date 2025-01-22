@@ -3,8 +3,11 @@ import PopularMedicalLogo from "../../../assets/images/popular-medical-camp-logo
 import { BsLinkedin } from "react-icons/bs";
 import { SiGithub } from "react-icons/si";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
+import useOrganizer from "../../../hooks/useOrganizer";
 
 const Footer = () => {
+  const [organizer] = useOrganizer();
+  
   return (
     <footer className="footer gap-6 footer-center bg-violet-100 rounded p-10">
       <div className="flex gap-x-2 items-center">
@@ -16,7 +19,7 @@ const Footer = () => {
       <nav className="flex gap-4 items-center text-gray-800 *:font-bold">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/available-camps">Available Camps</NavLink>
-        <NavLink to="/dashboard">Dashboard</NavLink>
+        <NavLink to={`${organizer ? "/dashboard/organizer-profile" : "/dashboard/analytics"}`}>Dashboard</NavLink>
       </nav>
 
       <nav>
