@@ -6,7 +6,7 @@ import ReactStars from "react-rating-stars-component";
 
 const Feedback = () => {
   const axiosPublic = useAxiosPublic();
-  const { data: feedbacks = [], isPending } = useQuery({
+  const { data: feedbacks = []} = useQuery({
     queryKey: ["feedbacks"],
     queryFn: async () => {
       const response = await axiosPublic.get("/feedbacks");
@@ -14,7 +14,7 @@ const Feedback = () => {
     },
   });
 
-  if (isPending) return <Loading />;
+  // if (isPending) return <Loading />;
 
   return (
     <div className="pb-4">

@@ -1,11 +1,11 @@
 // import { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/navigation";
+// import "swiper/css/navigation";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const Banner = () => {
   // const [stories, setStories] = useState([]);
@@ -29,9 +29,8 @@ const Banner = () => {
   return (
     <div className="pb-8">
       <Swiper
-        modules={[Pagination, Navigation, Autoplay]}
-        pagination={{ clickable: true }}
-        navigation
+        modules={[Pagination, Autoplay]}
+        pagination={{clickable: true}}
         autoplay={{ delay: 4000 }}
         loop={true}
         className="w-full lg:h-[500px] md:h-96 h-80"

@@ -1,11 +1,11 @@
 import { MdFindInPage } from "react-icons/md";
 
-const Pagination = ({pages, currentPage, setCurrentPage, handleNext, handlePrev}) => {
+const Pagination = ({pages, currentPage, setCurrentPage, count, handleNext, handlePrev}) => {
 
   return (
     <div className="mt-6 flex md:flex-row justify-between items-center flex-col md:gap-0 gap-2">
       <div className="justify-start flex gap-2 items-center">
-      <MdFindInPage className="text-2xl" /> <p className="text-lg text-gray-700 font-bold">Showing 1-10 rows</p>
+      <MdFindInPage className="text-2xl" /> <p className="text-lg text-gray-700 font-bold">Showing 1 to {count} rows</p>
       </div>
       <div className="justify-end">
         <button

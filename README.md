@@ -1,16 +1,52 @@
 # Popular Medical Camp
 
-# Organizer Info
+A web application for managing participant registrations, payments, and confirmation statuses for camp events. The platform is designed for organizers to efficiently manage and track participants.
 
-<li><b>Organizer Username</b>mahim1234</li>
-<li><b>Organizer Password</b>Mahim@1234</li>
-<hr>
+## Live Site URL
+🔗 **[Live Website](https://popular-medical-camp.web.app)**
 
-# Live Website
+---
 
-<li><b>Link:</b> https://popular-medical-camp.web.app</li>
+## Organizer Login Credentials
+- **Username:** mahim1234@gmail.com
+- **Password:** Mahim@1234
 
-<hr>
+---
+
+## Features
+1. **Secure Login for Organizers:** Organizers can log in securely to manage camp registrations.
+2. **Search Functionality:** Search participants by name, camp name, fees, or statuses with a dynamic search bar.
+3. **Pagination:** View registered participants with a paginated interface for better data navigation.
+4. **Participant Confirmation:** Change the confirmation status of participants directly from the interface.
+5. **Payment Status Tracking:** Easily identify participants who have paid or are yet to pay.
+6. **Cancel Registrations:** Cancel registrations for participants with pending payment or unconfirmed status.
+7. **Real-Time Updates:** Data is fetched and updated in real-time with React Query.
+8. **Custom Items Per Page:** Choose how many participants are displayed per page with adjustable pagination.
+9. **Responsive Design:** Fully responsive layout for seamless use across devices.
+10. **User-Friendly Dashboard:** Intuitive design with clean visuals for organizers to manage tasks efficiently.
+
+---
+
+## Technologies Used
+- **Frontend:** React, Tailwind CSS, Daisy UI
+- **State Management:** React Query
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** Custom middleware for token-based security
+- **Hosting:** Vercel (Backend), Firebase (Front-end)
+
+---
+
+## Getting Started
+To set up the project locally, follow these steps:
+
+### Prerequisites
+- Node.js installed
+- MongoDB database
+
+### Installation
+1. Clone this repository in your local folder then run this command in bash or command prompt <b>npm install</b>
+2. Do not forget to create a <b>.env.local</b> for keep secret values such as Firebase, imgBB API and Server URL. 
 
 # Setup
 
