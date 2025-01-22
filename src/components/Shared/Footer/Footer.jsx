@@ -6,7 +6,7 @@ import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="footer gap-6 footer-center bg-violet-100 rounded p-10">
+    <footer className="footer gap-6 footer-center bg-violet-200 rounded p-10">
       <div className="flex gap-x-2 items-center">
         <img className="w-10 h-10 rounded-lg object-cover" src={PopularMedicalLogo} alt="Logo of Popular Medical" />
 
