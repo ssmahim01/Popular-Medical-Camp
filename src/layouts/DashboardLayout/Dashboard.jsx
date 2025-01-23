@@ -134,7 +134,7 @@ const Dashboard = () => {
 
       {/* Content */}
       <div
-        className="min-h-[calc(100vh-200px)] md:p-8 p-4 flex-1 bg-slate-100"
+        className="min-h-screen md:p-8 p-4 flex-1 bg-slate-100"
         onClick={() => isSidebarOpen && setIsSidebarOpen(false)}
       >
         <Outlet />
