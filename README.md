@@ -30,10 +30,10 @@
 | Category        | Technologies |
 |----------------|-------------|
 | **Frontend**   | React, Tailwind CSS, Daisy UI, TailGrids |
-| **State Management** | React Query |
+| **State Management** | Tanstack (React) Query |
 | **Backend**    | Node.js, Express.js |
 | **Database**   | MongoDB |
-| **Authentication** | Token-based authentication with JWT |
+| **Authentication** | Token-based authentication with JWT, Firebase |
 | **Hosting**    | Firebase (Frontend), Vercel (Backend) |
 
 ---
