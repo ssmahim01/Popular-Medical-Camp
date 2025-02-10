@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="100%" height="340" src="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-ssmahim01/blob/main/public/medical-camp-management-system.png" />
+  <img width="100%" height="340" src="https://github.com/ssmahim01/Popular-Medical-Camp/blob/main/public/medical-camp-management-system.png" />
 </div>
 
 ---
@@ -75,7 +75,7 @@ npm run dev
 ```
 
 🔹 This will start the development server, and you can access it at:  
-📌 **`http://localhost:5173/`**  
+📌 **`http://localhost:5173`**  
 
 To start the backend, visit the **[Backend Repository](https://github.com/ssmahim01/popular-medical-camp-server)** and follow the setup instructions.
 
