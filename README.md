@@ -117,7 +117,6 @@ To start the backend, visit the **[Backend Repository](https://github.com/ssmahi
 | **react-hook-form** | [Docs](https://react-hook-form.com) |
 | **swiper-js** | [Docs](https://swiperjs.com/get-started) |
 | **stripe** | [Docs](https://www.npmjs.com/package/@stripe/react-stripe-js) |
-| **stripe** | [Docs](https://www.npmjs.com/package/@stripe/react-stripe-js) |
 | **react-icons** | [Docs](https://react-icons.github.io/react-icons) |
 | **sweetalert2** | [Docs](https://sweetalert2.github.io) |
 | **recharts** | [Docs](https://recharts.org/en-US) |
