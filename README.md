@@ -84,7 +84,7 @@ To start the backend, visit the **[Backend Repository](https://github.com/ssmahi
 ## 📦 Used Dependencies
 
 ```json
-{
+  "dependencies": {
   "@stripe/react-stripe-js": "^3.1.1",
   "@stripe/stripe-js": "^5.5.0",
   "@tanstack/react-query": "^5.64.1",
@@ -123,3 +123,29 @@ To start the backend, visit the **[Backend Repository](https://github.com/ssmahi
 
 ### ✅ Adjusting Pagination
 - Use the pagination controls to set the number of entries displayed.
+
+---
+
+## 📚 Used npm Packages
+
+| Package | Documentation |
+|---------|--------------|
+| **axios** | [Docs](https://axios-http.com/docs/intro) |
+| **tanstack-query** | [Docs](https://tanstack.com/query/latest/docs/framework/react/quick-start) |
+| **react-hook-form** | [Docs](https://react-hook-form.com) |
+| **swiper-js** | [Docs](https://swiperjs.com/get-started) |
+| **stripe** | [Docs](https://www.npmjs.com/package/@stripe/react-stripe-js) |
+| **stripe** | [Docs](https://www.npmjs.com/package/@stripe/react-stripe-js) |
+| **react-icons** | [Docs](https://react-icons.github.io/react-icons) |
+| **sweetalert2** | [Docs](https://sweetalert2.github.io) |
+| **recharts** | [Docs](https://recharts.org/en-US) |
+
+---
+
+## 🔧 Vite + React Setup
+
+This project is set up using **Vite** for fast development.
+
+Official plugins:
+- **[@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md)** - Uses Babel for Fast Refresh.
+- **[@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc)** - Uses SWC for Fast Refresh.
