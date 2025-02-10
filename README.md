@@ -77,7 +77,7 @@ npm run dev
 🔹 This will start the development server, and you can access it at:  
 📌 **`http://localhost:5173`**  
 
-To start the backend, visit the **[Backend Repository](https://github.com/ssmahim01/popular-medical-camp-server)** and follow the setup instructions.
+To start the backend, visit the **[Backend Repository](https://github.com/ssmahim01/popular-medical-camp-server)**
 
 ---
 
