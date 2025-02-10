@@ -108,24 +108,6 @@ To start the backend, visit the **[Backend Repository](https://github.com/ssmahi
 ```
 ---
 
-## 📌 Usage Guide
-
-### ✅ Logging In
-- Use the following **Organizer Login Credentials**:
-  - **Email:** `mahim1234@gmail.com`
-  - **Password:** `Mahim@1234`
-
-### ✅ Managing Participants
-1. Navigate to the **dashboard** after logging in.
-2. Use the **search bar** to find participants.
-3. Update **payment** or **confirmation status**.
-4. Cancel registrations if required.
-
-### ✅ Adjusting Pagination
-- Use the pagination controls to set the number of entries displayed.
-
----
-
 ## 📚 Used npm Packages
 
 | Package | Documentation |
