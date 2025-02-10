@@ -19,6 +19,7 @@ import ManageCamps from "../pages/DashboardPages/Organizer/ManageCamps";
 import OrganizerProfile from "../pages/DashboardPages/Organizer/OrganizerProfile";
 import AddCamp from "../pages/DashboardPages/Organizer/AddCamp";
 import ManageRegisteredCamps from "../pages/DashboardPages/Organizer/ManageRegisteredCamps";
+import GenerateImage from "../pages/GenerateImage/GenerateImage";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: "/available-camps",
                 element: <AvailableCamps />
+            },
+            {
+                path: "/generate-image",
+                element: <GenerateImage />
             },
             {
                 path: "/camp-details/:campId",
