@@ -33,7 +33,7 @@ const Banner = () => {
         pagination={{ clickable: true }}
         navigation={{clickable: true}}
         autoplay={{ delay: 4000 }}
-        loop={true}
+        // loop={true}
         className="w-full lg:h-[500px] md:h-96 h-80"
       >
         {stories.map((story) => (

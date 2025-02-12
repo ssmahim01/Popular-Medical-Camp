@@ -1,39 +1,40 @@
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import axios from "axios";
 
 const GenerateImage = () => {
-    const {user, logInWithGoogle} = useAuth();
+  const { user, logInWithGoogle } = useAuth();
 
-    const checkUser = () => {
-        if (!user) {
-          Swal.fire({
-            title: "Please Login",
-            text: "Join as a Creator with One Click",
-            imageUrl: "https://img.icons8.com/?size=100&id=szz75vJoS2OI&format=gif",
-            imageHeight: "80px",
-            imageAlt: "Custom image",
-            showCancelButton: true,
-            confirmButtonText: `Login using Google`,
-            confirmButtonColor: "#149b9b",
-          }).then((res) => {
-            if (res.isConfirmed) {
-              logInWithGoogle()
-                .then((res) => {
-                  const user = res.user;
-                  console.log(user);
-                  Swal.fire("success", "Welcome to this page", "success");
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
-            }
-          });
-          return false;
-        } else {
-          return true;
+  const checkUser = () => {
+    if (!user) {
+      Swal.fire({
+        title: "Please Login",
+        text: "Join as a Creator with One Click",
+        imageUrl: "https://img.icons8.com/?size=100&id=szz75vJoS2OI&format=gif",
+        imageHeight: "80px",
+        imageAlt: "Custom image",
+        showCancelButton: true,
+        confirmButtonText: `Login using Google`,
+        confirmButtonColor: "#149b9b",
+      }).then((res) => {
+        if (res.isConfirmed) {
+          logInWithGoogle()
+            .then((res) => {
+              const user = res.user;
+              console.log(user);
+              Swal.fire("success", "Welcome to this page", "success");
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
-      };
-    
+      });
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   const options = [
     "Painting",
     "Animated-image",
@@ -45,47 +46,54 @@ const GenerateImage = () => {
 
   const validationForm = (prompt, category) => {
     if (!category) {
-        Swal.fire(
-          "Select Category",
-          "Select a Category from the dropdown",
-          "error"
-        );
-        return false;
-      }
-      if (!prompt) {
-        Swal.fire("Write a Prompt", "Write a prompt in the input", "error");
-        return false;
-      }
-      if (!prompt) {
-        Swal.fire("Write a Prompt", "Write a prompt in the input", "error");
-        return false;
-      }
-      if (prompt.trim().length < 20) {
-        Swal.fire(
-          "Invalid Prompt",
-          "make your prompt bigger (minimum 20 character)",
-          "error"
-        );
-        return false;
-      }
+      Swal.fire(
+        "Select Category",
+        "Select a Category from the dropdown",
+        "error"
+      );
+      return false;
+    }
+    if (!prompt) {
+      Swal.fire("Write a Prompt", "Write a prompt in the input", "error");
+      return false;
+    }
+    if (!prompt) {
+      Swal.fire("Write a Prompt", "Write a prompt in the input", "error");
+      return false;
+    }
+    if (prompt.trim().length < 20) {
+      Swal.fire(
+        "Invalid Prompt",
+        "make your prompt bigger (minimum 20 character)",
+        "error"
+      );
+      return false;
+    }
 
-      return true;
+    return true;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const form = e.target;
     const prompt = form.prompt.value;
     const category = form.category.value;
+    const email = user?.email;
 
-    if(!validationForm(prompt, category)) return;
-    if(!checkUser()) return;
+    if (!validationForm(prompt, category)) return;
+    if (!checkUser()) return;
 
     console.log({ prompt, category });
-    const finalPrompt = `imagine a ${category} : ${prompt}`;
-    console.log(finalPrompt);
-    return;
+    axios.post("http://localhost:5000/generate", {
+      username: user?.displayName || "Anonymous",
+      email,
+      userImg: user?.photoURL || "https://img.icons8.com/stickers/40/test-account.png",
+      prompt,
+      category,
+    }).then(res => {
+      console.log(res.data);
+    })
   };
 
   return (
