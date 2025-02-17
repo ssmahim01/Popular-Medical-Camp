@@ -1,8 +1,9 @@
 // import { useEffect, useState } from "react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "swiper/css/effect-fade";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,9 +17,7 @@ const Banner = () => {
   //     .then((data) => setStories(data));
   // }, []);
 
-  const {
-    data: stories = [],
-  } = useQuery({
+  const { data: stories = [] } = useQuery({
     queryKey: ["stories"],
     queryFn: async () => {
       const res = await axios.get(`stories.json`);
@@ -29,9 +28,10 @@ const Banner = () => {
   return (
     <div className="pb-8">
       <Swiper
-        modules={[Pagination, Navigation, Autoplay]}
+        modules={[EffectFade, Pagination, Navigation, Autoplay]}
+        effect={"fade"}
         pagination={{ clickable: true }}
-        navigation={{clickable: true}}
+        navigation={{ clickable: true }}
         autoplay={{ delay: 4000 }}
         // loop={true}
         className="w-full lg:h-[500px] md:h-96 h-80"
