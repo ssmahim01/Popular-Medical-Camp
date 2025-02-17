@@ -1,0 +1,50 @@
+[
+    {
+      "id": 1,
+      "title": "Stay Hydrated: The Key to a Healthy Life",
+      "image": "https://i.ibb.co.com/JjQGg9YC/stay-hydrated.webp",
+      "description": "Drinking enough water daily helps regulate body temperature, improve digestion, and boost energy levels.",
+      "category": "Nutrition",
+      "importance_level": "High"
+    },
+    {
+      "id": 2,
+      "title": "Boost Immunity with a Balanced Diet",
+      "image": "https://i.ibb.co.com/0yQHpk8f/balanced-diet.jpg",
+      "description": "Eating a variety of fruits, vegetables, and proteins strengthens the immune system and improves overall health.",
+      "category": "Nutrition",
+      "importance_level": "High"
+    },
+    {
+      "id": 3,
+      "title": "Exercise Regularly for a Stronger Body",
+      "image": "https://i.ibb.co.com/jP92msSt/exercise.jpg",
+      "description": "Engaging in at least 30 minutes of exercise daily helps maintain a healthy weight and reduces the risk of diseases.",
+      "category": "Fitness",
+      "importance_level": "High"
+    },
+    {
+      "id": 4,
+      "title": "Get Enough Sleep to Reduce Stress",
+      "image": "https://i.ibb.co.com/V0PCDL0V/reduce-stress.jpg",
+      "description": "Sleeping for 7-9 hours per night improves brain function, reduces stress, and boosts the immune system.",
+      "category": "Mental Health",
+      "importance_level": "Medium"
+    },
+    {
+      "id": 5,
+      "title": "Maintain Hand Hygiene to Prevent Illness",
+      "image": "https://i.ibb.co.com/LDGs6gbF/hand-hygiene.jpg",
+      "description": "Washing hands regularly with soap prevents the spread of infections and protects against harmful bacteria.",
+      "category": "Hygiene",
+      "importance_level": "High"
+    },
+    {
+      "id": 6,
+      "title": "Increase Fruit & Vegetable Intake for Better Health",
+      "image": "https://i.ibb.co.com/xS94v4mH/fruit-vegetable.jpg",
+      "description": "Consuming more fruits and vegetables provides essential vitamins and minerals for a healthier body.",
+      "category": "Nutrition",
+      "importance_level": "High"
+    }
+  ]  
