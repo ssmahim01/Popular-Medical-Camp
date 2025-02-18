@@ -61,7 +61,7 @@ const PopularCamps = () => {
 
                 <div>
                   <p className="text-gray-600 font-medium">
-                    {camp?.description.slice(0, 80)}...
+                    {camp?.description.slice(0, 70)}...
                   </p>
                 </div>
 

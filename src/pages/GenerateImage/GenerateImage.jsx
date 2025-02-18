@@ -2,11 +2,16 @@ import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { useAxiosSecure } from "../../hooks/useAxiosSecure";
 import { useState } from "react";
+import ShowImages from "../../components/ShowAiImages/ShowImages";
+import useImages from "../../hooks/useImages";
+import Loading from "../../components/Loading/Loading";
 
 const GenerateImage = () => {
+  const { user, logInWithGoogle, loading, setLoading } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [imageData, setImageData] = useState([]);
-  const { user, logInWithGoogle } = useAuth();
+  const [, , refetch] = useImages();
+  // console.log(imageData.data.url);
   const imgBB_api = `https://api.imgbb.com/1/upload?key=${
     import.meta.env.VITE_IMGBB_API_KEY
   }`;
@@ -27,11 +32,11 @@ const GenerateImage = () => {
           logInWithGoogle()
             .then((res) => {
               const user = res.user;
-              console.log(user);
+              // console.log(user);
               Swal.fire("success", "Welcome to this page", "success");
             })
             .catch((err) => {
-              console.log(err);
+              // console.log(err);
             });
         }
       });
@@ -108,7 +113,7 @@ const GenerateImage = () => {
       body: formData,
     });
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     setImageData(data);
     return data;
   };
@@ -119,16 +124,16 @@ const GenerateImage = () => {
     const form = e.target;
     const prompt = form.prompt.value;
     const category = form.category.value;
-    const email = user?.email;
-    
+
     if (!validationForm(prompt, category)) return;
     if (!checkUser()) return;
-    if (getImageBuffer(prompt, category)) return;
-    console.log({ prompt, category });
+    if (!getImageBuffer(prompt, category)) return;
+    setLoading(true);
+    // console.log({ prompt, category });
 
     const generatedData = {
       username: user?.displayName || "Anonymous",
-      email,
+      email: user?.email,
       userImg:
         user?.photoURL || "https://img.icons8.com/stickers/40/test-account.png",
       prompt,
@@ -140,11 +145,24 @@ const GenerateImage = () => {
     };
 
     const response = await axiosSecure.post("/generate", generatedData);
-    console.log(response.data);
+    if (response.data.insertedId) {
+      form.reset();
+      refetch();
+      setLoading(false);
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: `${prompt} has been generated`,
+        showConfirmButton: false,
+        timer: 3000,
+      });
+    }
   };
 
+  if (loading) return <Loading />;
+
   return (
-    <div className="w-11/12 mx-auto py-10">
+    <div className="lg:w-4/5 w-11/12 mx-auto py-10">
       <div className="flex justify-center py-5">
         <img
           src="medical-doctor.png"
@@ -152,6 +170,7 @@ const GenerateImage = () => {
           className="animate-bounce w-32 h-32"
         />
       </div>
+
       <form
         onSubmit={handleSubmit}
         className="join w-full md:flex-row flex-col justify-center flex-wrap"
@@ -184,6 +203,8 @@ const GenerateImage = () => {
           </div>
         </div>
       </form>
+
+      <ShowImages />
     </div>
   );
 };

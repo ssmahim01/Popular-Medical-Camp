@@ -53,7 +53,7 @@ const AffordableCamps = () => {
                 </div>
 
                 <div>
-                    <p className="text-gray-600 font-medium">{camp?.description.slice(0, 80)}...</p>
+                    <p className="text-gray-600 font-medium">{camp?.description.slice(0, 70)}...</p>
                 </div>
 
                 <Link to={`/camp-details/${camp?._id}`} className="block pt-2">

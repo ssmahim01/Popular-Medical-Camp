@@ -93,7 +93,7 @@ const CheckoutForm = ({ campId }) => {
         };
 
         const response = await axiosSecure.post("/payments", paymentInfo);
-        console.log(response.data, transactionId);
+        // console.log(response.data, transactionId);
         refetch();
 
         if(response.data.insertResult.insertedId){
