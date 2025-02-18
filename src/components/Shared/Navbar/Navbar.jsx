@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed z-10 border-b border-gray-300 lg:px-16 md:px-8 px-6 navbar bg-purple-200">
+    <div className="fixed z-10 border-b border-gray-300 lg:px-16 md:px-8 px-6 navbar bg-purple-300">
       <div className="flex-1">
         <div className="flex gap-2 items-center">
           <img
@@ -43,7 +43,7 @@ const Navbar = () => {
       <div className="flex-none">
         <div className="flex md:text-base text-sm gap-4 items-center text-gray-800 *:font-bold mr-4">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/generate-image">Generate Image</NavLink>
+          <NavLink to="/available-camps">Available Camps</NavLink>
         </div>
         {user ? (
           <div className="dropdown dropdown-end">
@@ -52,7 +52,7 @@ const Navbar = () => {
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-12 h-12 border-4 border-cyan-500 rounded-full hover:border-gray-300">
+              <div className="w-12 h-12 border-4 border-cyan-600 rounded-full hover:border-gray-300">
                 <img
                   alt={user ? user?.displayName : "Guest user"}
                   src={user ? user?.photoURL : userImg}
@@ -66,7 +66,7 @@ const Navbar = () => {
             >
               <div className="px-2 *:font-bold flex flex-col gap-2">
                 <h4 className="text-gray-600 font-bold">{user?.displayName}</h4>
-                <NavLink to="/available-camps">Available Camps</NavLink>
+                <NavLink to="/generate-image">Generate Image</NavLink>
 
                 <NavLink
                   to={`${
