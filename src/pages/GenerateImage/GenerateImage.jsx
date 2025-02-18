@@ -85,7 +85,7 @@ const GenerateImage = () => {
     if (!checkUser()) return;
 
     console.log({ prompt, category });
-    axios.post("http://localhost:5000/generate", {
+    axios.post("https://popular-medical-camp-server.vercel.app/generate", {
       username: user?.displayName || "Anonymous",
       email,
       userImg: user?.photoURL || "https://img.icons8.com/stickers/40/test-account.png",

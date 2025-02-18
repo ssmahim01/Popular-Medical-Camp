@@ -24,7 +24,7 @@ const AvailableCamps = () => {
   });
 
   return (
-    <div className="pt-6 pb-12 w-11/12 mx-auto">
+    <div className="pt-6 pb-12 lg:w-4/5 w-11/12 mx-auto">
       <Heading title={"Available Camps"} />
 
       {/* Search Bar */}
