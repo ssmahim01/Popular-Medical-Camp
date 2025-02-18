@@ -212,7 +212,7 @@ const AddCamp = () => {
             <div className="pt-4 lg:w-1/4 md:w-1/2 w-3/4 md:mx-0 mx-auto form-control text-center">
               <button
                 type="submit"
-                className="flex gap-2 items-center btn bg-teal-600 text-white font-bold border-none rounded"
+                className="flex gap-2 items-center btn bg-cyan-600 hover:bg-cyan-800 text-white font-bold border-none rounded"
               >
                 <IoIosAddCircleOutline className="text-2xl" />{" "}
                 <span className="text-lg">Add Camp</span>

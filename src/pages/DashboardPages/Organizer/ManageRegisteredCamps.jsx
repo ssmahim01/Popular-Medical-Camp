@@ -184,7 +184,7 @@ const ManageRegisteredCamps = () => {
                     className={`badge text-white font-semibold ${
                       participant?.paymentStatus === "Paid"
                         ? "badge-success"
-                        : "badge-secondary"
+                        : "bg-purple-600"
                     }`}
                   >
                     {participant?.paymentStatus === "Paid" ? "Paid" : "Unpaid"}

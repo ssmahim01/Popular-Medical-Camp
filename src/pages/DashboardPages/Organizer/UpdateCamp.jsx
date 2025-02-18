@@ -255,7 +255,7 @@ const UpdateCamp = () => {
             <div className="pt-4 lg:w-1/4 md:w-1/2 w-3/4 md:mx-0 mx-auto form-control text-center">
               <button
                 type="submit"
-                className="flex gap-2 items-center btn btn-neutral text-white font-bold border-none rounded"
+                className="flex gap-2 items-center btn bg-emerald-500 hover:bg-emerald-700 text-white font-bold border-none rounded"
               >
                 <FaEdit className="text-2xl" />{" "}
                 <span className="text-lg">Update Camp</span>

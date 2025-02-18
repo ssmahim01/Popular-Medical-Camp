@@ -75,7 +75,7 @@ const ManageCamps = () => {
       <div className="overflow-x-auto bg-base-100 bg-opacity-80 shadow-md md:rounded-lg">
         <table className="table w-full">
           <thead>
-            <tr className="bg-teal-600 *:text-white *:font-bold">
+            <tr className="bg-cyan-600 *:text-white *:font-bold">
               <th>Serial.</th>
               <th>Name</th>
               <th>Date & Time</th>
@@ -118,7 +118,7 @@ const ManageCamps = () => {
 
                 <td className="flex gap-2 items-center">
                   <Link to={`/dashboard/update-camp/${camp?._id}`}>
-                    <button className="py-2 px-6 bg-neutral border-none text-white font-bold flex gap-2 items-center rounded">
+                    <button className="py-2 px-6 bg-purple-600 hover:bg-purple-800 border-none text-white font-bold flex gap-2 items-center rounded">
                       <span className="text-base">Update</span>{" "}
                       <MdEditSquare className="text-base" />
                     </button>

@@ -167,14 +167,14 @@ const CampDetails = () => {
               <button
                 onClick={() => handleModalOpen(camp)}
                 disabled={!user}
-                className="btn bg-indigo-500 border-none rounded text-white font-bold flex gap-2 items-center px-6"
+                className="btn bg-cyan-600 hover:bg-cyan-800 border-none rounded text-white font-bold flex gap-2 items-center px-6"
               >
                 <span className="text-lg">Join Camp</span>{" "}
                 <MdLibraryAdd className="text-2xl" />
               </button>
             </Link>
 
-            <p className={`mt-3 ${user ? "hidden" : "block"} text-teal-600 font-bold`}>Only logged in participants can join this camp</p>
+            <p className={`mt-3 ${user ? "hidden" : "block"} text-cyan-600 font-bold`}>Only logged in participants can join this camp</p>
           </div>
         </div>
       </div>

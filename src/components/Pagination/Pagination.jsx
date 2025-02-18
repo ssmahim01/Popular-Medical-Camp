@@ -19,7 +19,7 @@ const Pagination = ({pages, currentPage, setCurrentPage, count, handleNext, hand
           <button
             className={
               currentPage === page
-                ? "btn ml-2 font-bold bg-indigo-500 text-white"
+                ? "btn ml-2 font-bold bg-cyan-600 text-white"
                 : "btn bg-gray-200 ml-2 font-bold"
             }
             onClick={() => setCurrentPage(page)}
@@ -31,7 +31,7 @@ const Pagination = ({pages, currentPage, setCurrentPage, count, handleNext, hand
 
         <button
           onClick={handleNext}
-          className="btn btn-outline border border-gray-300 shadow-md text-indigo-600 font-bold ml-3"
+          className="btn btn-outline border border-gray-300 shadow-md text-cyan-600 font-bold ml-3"
         >
           Next
         </button>

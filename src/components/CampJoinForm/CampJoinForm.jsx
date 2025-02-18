@@ -174,7 +174,7 @@ const CampJoinForm = ({ joinCamp, user, onSubmit, handleSubmit, register, errors
 
       {/* Action Buttons */}
       <div className="py-3 flex gap-4 justify-center items-center">
-        <button className="form-control flex gap-2 items-center md:px-14 px-6 btn bg-indigo-500 hover:bg-teal-600 rounded text-white font-bold">
+        <button className="form-control flex gap-2 items-center md:px-14 px-6 btn bg-cyan-600 hover:bg-cyan-800 rounded text-white font-bold">
           <span className="text-lg">Join Now</span>{" "}
           <MdGroupAdd className="text-xl" />
         </button>
