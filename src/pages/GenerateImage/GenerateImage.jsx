@@ -1,9 +1,15 @@
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
-import axios from "axios";
+import { useAxiosSecure } from "../../hooks/useAxiosSecure";
+import { useState } from "react";
 
 const GenerateImage = () => {
+  const axiosSecure = useAxiosSecure();
+  const [imageData, setImageData] = useState([]);
   const { user, logInWithGoogle } = useAuth();
+  const imgBB_api = `https://api.imgbb.com/1/upload?key=${
+    import.meta.env.VITE_IMGBB_API_KEY
+  }`;
 
   const checkUser = () => {
     if (!user) {
@@ -73,6 +79,40 @@ const GenerateImage = () => {
     return true;
   };
 
+  const getImageBuffer = async (prompt, category) => {
+    const finalPrompt = `imagine a ${category} : ${prompt}`;
+    const myForm = new FormData();
+    myForm.append("prompt", finalPrompt);
+
+    const response = await fetch("https://clipdrop-api.co/text-to-image/v1", {
+      method: "POST",
+      headers: {
+        "x-api-key": import.meta.env.VITE_CD_KEY,
+      },
+      body: myForm,
+    });
+    const buffer = await response.arrayBuffer();
+    if (buffer) return generateImageUrl(buffer, prompt);
+  };
+
+  const generateImageUrl = async (buffer, prompt) => {
+    const formData = new FormData();
+    formData.append(
+      "image",
+      new Blob([buffer], { type: "image/png" }),
+      `${prompt}.png`
+    );
+
+    const response = await fetch(imgBB_api, {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    console.log(data);
+    setImageData(data);
+    return data;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -80,20 +120,27 @@ const GenerateImage = () => {
     const prompt = form.prompt.value;
     const category = form.category.value;
     const email = user?.email;
-
+    
     if (!validationForm(prompt, category)) return;
     if (!checkUser()) return;
-
+    if (getImageBuffer(prompt, category)) return;
     console.log({ prompt, category });
-    axios.post("https://popular-medical-camp-server.vercel.app/generate", {
+
+    const generatedData = {
       username: user?.displayName || "Anonymous",
       email,
-      userImg: user?.photoURL || "https://img.icons8.com/stickers/40/test-account.png",
+      userImg:
+        user?.photoURL || "https://img.icons8.com/stickers/40/test-account.png",
       prompt,
       category,
-    }).then(res => {
-      console.log(res.data);
-    })
+      originalImg: imageData.data.url,
+      generatedImg: imageData.data.thumb.url,
+      mediumImg: imageData.data.medium.url,
+      createdAt: new Date().toISOString(),
+    };
+
+    const response = await axiosSecure.post("/generate", generatedData);
+    console.log(response.data);
   };
 
   return (

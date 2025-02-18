@@ -2,12 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { useAxiosPublic } from "../../hooks/useAxiosPublic";
 import Loading from "../Loading/Loading";
 import Heading from "../Heading/Heading";
-import { FaUserDoctor, FaUsers } from "react-icons/fa6";
-import { IoLocation, IoTimer } from "react-icons/io5";
-import { MdDateRange, MdReadMore } from "react-icons/md";
-import { TbCoinTakaFilled } from "react-icons/tb";
+import { FaUsers } from "react-icons/fa6";
+import { IoLocation } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { FaArrowAltCircleRight } from "react-icons/fa";
+import { MdReadMore } from "react-icons/md";
 
 const PopularCamps = () => {
   const axiosPublic = useAxiosPublic();
@@ -26,7 +25,7 @@ const PopularCamps = () => {
   return (
     <div className="pt-6 pb-12">
       <div className="lg:w-4/5 w-11/12 mx-auto">
-        <Heading title={"Popular Camps"} />
+        <Heading title={"Most Registered Camps"} />
 
         {/* Popular Camp Cards*/}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-11">
@@ -40,25 +39,10 @@ const PopularCamps = () => {
                 alt={camp?.campName}
                 className="rounded-lg w-full h-52 object-cover"
               />
-              <div className="pt-3 space-y-3">
+              <div className="pt-3 space-y-2">
                 <h3 className="text-gray-900 text-xl font-bold">
                   {camp?.campName}
                 </h3>
-
-                <div className="flex justify-between items-center">
-                  <p className="text-gray-700 font-semibold flex gap-2 items-center">
-                    <span>
-                      <MdDateRange className="text-xl" />
-                    </span>{" "}
-                    {new Date(camp?.dateTime).toLocaleDateString("en-UK")}
-                  </p>
-                  <p className="text-gray-700 flex gap-2 items-center font-semibold">
-                    <span>
-                      <IoTimer className="text-xl" />
-                    </span>{" "}
-                    {new Date(camp?.dateTime).toLocaleTimeString("en-US")}
-                  </p>
-                </div>
 
                 <div className="flex justify-between items-center mb-2">
                   <p className="text-gray-700 font-semibold flex gap-1 items-center">
@@ -75,24 +59,15 @@ const PopularCamps = () => {
                   </p>
                 </div>
 
-                <div className="flex justify-between items-center">
-                  <p className="text-gray-700 font-semibold flex gap-2 items-center">
-                    <span>
-                      <FaUserDoctor className="text-base" />
-                    </span>{" "}
-                    {camp?.professionalName}
-                  </p>
-
-                  <p className="text-gray-700 font-semibold">
-                    <span className="flex gap-1 items-center">
-                      <TbCoinTakaFilled className="text-xl" /> {camp?.fees}
-                    </span>
+                <div>
+                  <p className="text-gray-600 font-medium">
+                    {camp?.description.slice(0, 80)}...
                   </p>
                 </div>
 
                 <Link to={`/camp-details/${camp?._id}`} className="block pt-2">
                   <button className="w-full btn bg-cyan-600 border-none rounded text-white font-bold flex gap-2 items-center px-6">
-                    <span className="text-lg">Details</span>{" "}
+                    <span className="text-lg">See More</span>{" "}
                     <MdReadMore className="text-2xl" />
                   </button>
                 </Link>

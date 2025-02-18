@@ -5,6 +5,7 @@ import PopularCamps from "../../components/Home/PopularCamps";
 import Doctors from "../../components/Home/Doctors";
 import HealthTips from "../../components/Home/HealthTips";
 import OurServices from "../../components/Home/OurServices";
+import AffordableCamps from "../../components/Home/AffordableCamps";
 
 const Home = () => {
     return (
@@ -17,6 +18,9 @@ const Home = () => {
 
            {/* Doctors component */}
            <Doctors />
+
+           {/* Affordable Camps component */}
+           <AffordableCamps />
 
             {/* Our Services component */}
             <OurServices />
