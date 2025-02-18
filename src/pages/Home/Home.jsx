@@ -3,7 +3,8 @@ import Feedback from "../../components/Home/Feedback";
 import OurImpact from "../../components/Home/OurImpact";
 import PopularCamps from "../../components/Home/PopularCamps";
 import Doctors from "../../components/Home/Doctors";
-import HealthTips from "../../components/HealthTips";
+import HealthTips from "../../components/Home/HealthTips";
+import OurServices from "../../components/Home/OurServices";
 
 const Home = () => {
     return (
@@ -16,6 +17,9 @@ const Home = () => {
 
            {/* Doctors component */}
            <Doctors />
+
+            {/* Our Services component */}
+            <OurServices />
 
            {/* Health Tips component */}
            <HealthTips />

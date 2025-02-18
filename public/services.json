@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "title": "Free Health Checkups",
+      "image": "/images/services/health-checkup.png",
+      "description": "Basic health screenings including blood pressure, sugar level, and BMI analysis."
+    },
+    {
+      "id": 2,
+      "title": "Doctor Consultation",
+      "image": "/images/services/consultation.png",
+      "description": "On-site consultations with experienced doctors for various health concerns."
+    },
+    {
+      "id": 3,
+      "title": "Emergency First Aid",
+      "image": "/images/services/emergency-first-aid.png",
+      "description": "Immediate medical attention for injuries, burns, and other minor emergencies."
+    },
+    {
+      "id": 4,
+      "title": "Vaccination & Immunization",
+      "image": "/images/services/vaccination.png",
+      "description": "Providing essential vaccines to prevent diseases and ensure community health."
+    },
+    {
+      "id": 5,
+      "title": "Maternal & Child Care",
+      "image": "/images/services/maternal-child-care.png",
+      "description": "Health support for pregnant women, and children including nutritional guidance."
+    },
+    {
+      "id": 6,
+      "title": "Health Awareness & Counseling",
+      "image": "/images/services/health.png",
+      "description": "Educational sessions on disease prevention to promote healthy lifestyles."
+    }
+  ]  

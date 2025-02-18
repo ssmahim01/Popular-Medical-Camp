@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import Heading from "./Heading/Heading";
+import Heading from "../Heading/Heading";
 import { BiSolidCategory } from "react-icons/bi";
 import { MdHealthAndSafety } from "react-icons/md";
 
