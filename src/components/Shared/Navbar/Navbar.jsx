@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed z-10 border-b border-gray-300 lg:px-32 md:px-8 px-5 navbar bg-purple-200">
+    <div className="fixed z-10 border-b border-gray-300 lg:px-32 md:px-8 px-5 navbar bg-purple-100">
       <div className="flex-1">
         <div className="flex gap-2 items-center">
           <img
@@ -44,6 +44,9 @@ const Navbar = () => {
         <div className="flex md:text-base text-sm gap-4 items-center text-gray-800 *:font-bold mr-4">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/available-camps">Available Camps</NavLink>
+          <div className="hidden md:flex gap-4 items-center">
+            <NavLink to="/services">Services</NavLink>
+          </div>
         </div>
         {user ? (
           <div className="dropdown dropdown-end avatar online">
@@ -66,8 +69,11 @@ const Navbar = () => {
             >
               <div className="px-2 *:font-bold flex flex-col gap-2">
                 <h4 className="text-gray-600 font-bold">{user?.displayName}</h4>
-                <NavLink to="/generate-image">Generate Image</NavLink>
+                <div className="md:hidden block">
+                  <NavLink to="/services">Services</NavLink>
+                </div>
 
+                <NavLink to="/generate-image">Generate Image</NavLink>
                 <NavLink
                   to={`${
                     organizer
@@ -88,7 +94,7 @@ const Navbar = () => {
           </div>
         ) : (
           <Link to="/login">
-            <button className="btn bg-teal-500 border-none rounded-md text-white md:text-base font-bold">
+            <button className="btn bg-cyan-600 border-none rounded-md text-white md:text-base font-bold">
               Join Us
             </button>
           </Link>

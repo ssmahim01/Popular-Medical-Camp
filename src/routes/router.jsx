@@ -22,6 +22,7 @@ import ManageRegisteredCamps from "../pages/DashboardPages/Organizer/ManageRegis
 import GenerateImage from "../pages/GenerateImage/GenerateImage";
 import OrganizerHome from "../pages/DashboardPages/Organizer/OrganizerHome";
 import ParticipantHome from "../pages/DashboardPages/Participant/ParticipantHome";
+import Services from "../pages/Services/Services";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
             {
                 path: "/generate-image",
                 element: <GenerateImage />
+            },
+            {
+                path: "/services",
+                element: <Services />
             },
             {
                 path: "/camp-details/:campId",

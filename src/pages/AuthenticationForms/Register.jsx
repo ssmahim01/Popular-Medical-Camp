@@ -104,7 +104,7 @@ const Register = () => {
             <input
               type="file"
               {...register("image", { required: true })}
-              className="file-input file-input-bordered file-input-accent text-gray-700 font-semibold h-10 md:w-1/2 w-full"
+              className="file-input file-input-bordered file-input-info text-gray-700 font-semibold h-10 md:w-1/2 w-full"
             />
 
             {errors.image && (
@@ -179,7 +179,7 @@ const Register = () => {
 
         <p className="text-center mt-5 text-gray-700 font-bold px-4">
           Already Have An Account? Go To{" "}
-          <Link to="/login" className="text-teal-600 font-extrabold">
+          <Link to="/login" className="text-cyan-600 font-extrabold">
             Login
           </Link>
         </p>

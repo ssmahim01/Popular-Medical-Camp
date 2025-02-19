@@ -1,7 +1,7 @@
 import { FaEdit, FaHistory, FaHome, FaUserCircle } from "react-icons/fa";
 import logo from "../../assets/images/popular-medical-camp-logo.png";
 import { IoIosAddCircle } from "react-icons/io";
-import { MdAssignmentAdd, MdManageSearch, MdMenuBook } from "react-icons/md";
+import { MdAssignmentAdd, MdManageSearch, MdMedicalServices, MdMenuBook } from "react-icons/md";
 import {
   Link,
   NavLink,
@@ -18,6 +18,7 @@ import Swal from "sweetalert2";
 import { TbLogout2 } from "react-icons/tb";
 import { useState } from "react";
 import { FaHouseMedical } from "react-icons/fa6";
+import { RiAiGenerate } from "react-icons/ri";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -135,6 +136,16 @@ const Dashboard = () => {
           <NavLink to="/available-camps">
             <h3 className="flex gap-2 items-center">
               <MdMenuBook className="text-lg" /> Available Camps
+            </h3>
+          </NavLink>
+          <NavLink to="/services">
+            <h3 className="flex gap-2 items-center">
+              <MdMedicalServices className="text-lg" /> Services
+            </h3>
+          </NavLink>
+          <NavLink to="/generate-image">
+            <h3 className="flex gap-2 items-center">
+            <RiAiGenerate className="text-lg" /> Generate Image
             </h3>
           </NavLink>
           <button
