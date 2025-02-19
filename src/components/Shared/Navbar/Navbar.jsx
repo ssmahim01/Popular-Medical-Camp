@@ -46,7 +46,7 @@ const Navbar = () => {
           <NavLink to="/available-camps">Available Camps</NavLink>
         </div>
         {user ? (
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end avatar online">
             <div
               tabIndex={0}
               role="button"
@@ -71,8 +71,8 @@ const Navbar = () => {
                 <NavLink
                   to={`${
                     organizer
-                      ? "/dashboard/organizer-profile"
-                      : "/dashboard/analytics"
+                      ? "/dashboard/organizer-home"
+                      : "/dashboard/participant-home"
                   }`}
                 >
                   Dashboard

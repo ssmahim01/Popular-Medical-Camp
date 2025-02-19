@@ -20,6 +20,8 @@ import OrganizerProfile from "../pages/DashboardPages/Organizer/OrganizerProfile
 import AddCamp from "../pages/DashboardPages/Organizer/AddCamp";
 import ManageRegisteredCamps from "../pages/DashboardPages/Organizer/ManageRegisteredCamps";
 import GenerateImage from "../pages/GenerateImage/GenerateImage";
+import OrganizerHome from "../pages/DashboardPages/Organizer/OrganizerHome";
+import ParticipantHome from "../pages/DashboardPages/Participant/ParticipantHome";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +61,10 @@ const router = createBrowserRouter([
         errorElement: <Error />,
         children: [
             {
+                path: "/dashboard/organizer-home",
+                element: <OrganizerRoute><OrganizerHome /></OrganizerRoute>
+            },
+            {
                 path: "/dashboard/organizer-profile",
                 element: <OrganizerRoute><OrganizerProfile /></OrganizerRoute>
             },
@@ -81,12 +87,16 @@ const router = createBrowserRouter([
 
             // Participant routes
             {
-                path: "/dashboard/analytics",
-                element: <Analytics />
+                path: "/dashboard/participant-home",
+                element: <ParticipantHome />
             },
             {
                 path: "/dashboard/participant-profile",
                 element: <ParticipantProfile />
+            },
+            {
+                path: "/dashboard/analytics",
+                element: <Analytics />
             },
             {
                 path: "/dashboard/registered-camps",

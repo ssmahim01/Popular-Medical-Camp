@@ -110,7 +110,7 @@ const Login = () => {
             )}
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-teal-600 border-none text-white/90 text-lg rounded-md font-bold">
+            <button className="btn bg-cyan-600 border-none text-white/90 text-lg rounded-md font-bold">
               Login
             </button>
           </div>
@@ -118,7 +118,7 @@ const Login = () => {
 
         <p className="text-center my-5 text-gray-700 font-bold px-4">
           New User? Please{" "}
-          <Link to="/register" className="text-emerald-500 font-extrabold">
+          <Link to="/register" className="text-emerald-600 font-extrabold">
             Register
           </Link>
         </p>

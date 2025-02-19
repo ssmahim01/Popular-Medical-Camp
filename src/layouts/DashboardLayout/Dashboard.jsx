@@ -17,6 +17,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { TbLogout2 } from "react-icons/tb";
 import { useState } from "react";
+import { FaHouseMedical } from "react-icons/fa6";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -67,6 +68,11 @@ const Dashboard = () => {
         <ul className="menu *:font-bold flex flex-col space-y-7 mt-3 p-4">
           {organizer ? (
             <>
+              <NavLink to="/dashboard/organizer-home">
+                <h3 className="flex gap-2 items-center">
+                  <FaHouseMedical className="text-lg" /> Dashboard
+                </h3>
+              </NavLink>
               <NavLink to="/dashboard/organizer-profile">
                 <h3 className="flex gap-2 items-center">
                   <FaUserCircle className="text-lg" /> Organizer Profile
@@ -92,6 +98,11 @@ const Dashboard = () => {
             </>
           ) : (
             <>
+              <NavLink to="/dashboard/participant-home">
+                <h3 className="flex gap-2 items-center">
+                  <FaHouseMedical className="text-lg" /> Dashboard
+                </h3>
+              </NavLink>
               <NavLink to="/dashboard/participant-profile">
                 <h3 className="flex gap-2 items-center">
                   <BsFillPersonFill className="text-lg" /> Participant Profile
@@ -145,7 +156,7 @@ const Dashboard = () => {
 
       {/* Content */}
       <div
-        className={`${location.pathname !== "/dashboard/organizer-profile" && location.pathname !== "/dashboard/participant-profile" ? "md:p-6 p-4" : ""} min-h-screen flex-1 bg-gray-100`}
+        className={`${location.pathname !== "/dashboard/organizer-profile" && location.pathname !== "/dashboard/participant-profile" && location.pathname !== "/dashboard/organizer-home" && location.pathname !== "/dashboard/participant-home" ? "md:p-5 p-4" : ""} min-h-screen flex-1 bg-gray-100`}
         onClick={() => isSidebarOpen && setIsSidebarOpen(false)}
       >
         <Outlet />
