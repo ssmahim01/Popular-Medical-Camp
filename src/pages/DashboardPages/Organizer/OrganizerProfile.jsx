@@ -5,6 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../components/Loading/Loading";
 import { useAxiosPublic } from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { MdCancel, MdUpdate } from "react-icons/md";
+import { HiSaveAs } from "react-icons/hi";
 
 const OrganizerProfile = () => {
   const { user, updateUserInfo } = useAuth();
@@ -79,7 +81,7 @@ const OrganizerProfile = () => {
       Swal.fire({
         position: "center",
         icon: "error",
-        title: error.message || "Something went wrong",
+        title: `${error.message}` || "Something went wrong",
         showConfirmButton: false,
         timer: 3000,
       });
@@ -90,133 +92,143 @@ const OrganizerProfile = () => {
   //   console.log(organizer);
 
   return (
-    <div className="lg:w-3/5 md:w-11/12 w-full md:my-12 my-10 mx-auto">
-      {!update ? (
-        <>
-          <h2 className="text-center md:text-4xl text-2xl font-extrabold mb-6">
-            Organizer Profile
-          </h2>
-          <div className="rounded-box border border-gray-200 bg-base-100 shadow-md">
-            <div className="flex flex-col p-6 gap-4">
-              <figure className="mx-auto">
-                <img
-                  className="w-48 h-48 border-4 border-neutral-300 rounded-full object-cover"
-                  src={organizer?.image}
-                  alt={organizer?.name}
-                  referrerPolicy="no-referrer"
-                />
-              </figure>
+    <>
+      <div className="bg-purple-600 lg:h-40 md:h-32 h-24 flex justify-center items-center">
+        <h2 className="text-center lg:text-5xl text-white text-opacity-90 md:text-4xl text-2xl font-extrabold">
+          {update ? "Update Information" : "Organizer Profile"}
+        </h2>
+      </div>
 
-              <div className="mt-6 flex lg:flex-row flex-col lg:justify-between lg:items-center">
-                <h4 className="text-gray-700 lg:text-lg font-bold">
-                  <span className="text-gray-900 font-bold">Name: </span>
-                  {organizer?.name}
-                </h4>
+      <div className="lg:w-4/5 md:w-11/12 w-full md:my-10 my-8 mx-auto">
+        {!update ? (
+          <>
+            <div className="md:rounded-xl border border-gray-200 bg-base-100 shadow-md">
+              <div className="flex flex-col p-6 gap-4">
+                <figure className="mx-auto">
+                  <img
+                    className="w-52 h-52 border-8 border-gray-300 rounded-full object-cover"
+                    src={organizer?.image}
+                    alt={organizer?.name}
+                    referrerPolicy="no-referrer"
+                  />
+                </figure>
 
-                <p className="text-gray-700 lg:text-lg font-bold">
-                  <span className="text-gray-800 font-bold">Email: </span>{" "}
-                  {organizer?.email}
-                </p>
-              </div>
+                <div className="mt-6 flex md:flex-row flex-col md:justify-between md:items-center">
+                  <h4 className="text-gray-700 lg:text-lg font-bold">
+                    <span className="text-gray-900 font-bold">Name: </span>
+                    {organizer?.name}
+                  </h4>
 
-              <div className="mt-2 lg:flex justify-between lg:items-center">
-                <h4 className="text-gray-700 lg:text-lg font-bold">
-                  <span className="text-gray-800 font-bold">
-                    Creation Date:{" "}
-                  </span>{" "}
-                  {new Date(organizer?.createdAt).toLocaleDateString()}
-                </h4>
+                  <p className="text-gray-700 lg:text-lg font-bold">
+                    <span className="text-gray-800 font-bold">Email: </span>{" "}
+                    {organizer?.email}
+                  </p>
+                </div>
 
-                <h4 className="text-gray-700 lg:text-lg font-bold">
-                  <span className="text-gray-800 font-bold">Contact: </span>{" "}
-                  {organizer?.contact || "01818788816"}
-                </h4>
-              </div>
+                <div className="mt-2 md:flex justify-between md:items-center">
+                  <h4 className="text-gray-700 lg:text-lg font-bold">
+                    <span className="text-gray-800 font-bold">Contact: </span>{" "}
+                    {organizer?.contact || "+8801818788816"}
+                  </h4>
 
-              <div className="mt-3 lg:mx-auto md:mx-0 mx-auto">
-                <button
-                  onClick={() => setUpdate(true)}
-                  className="btn bg-emerald-500 border-none text-lg text-white font-bold rounded-full px-8"
-                >
-                  Update Profile
-                </button>
+                  <h4 className="text-gray-700 lg:text-lg font-bold">
+                    <span className="text-gray-800 font-bold">Role: </span>{" "}
+                    {organizer?.role}
+                  </h4>
+                </div>
+
+                <div className="flex md:flex-row flex-col justify-between md:items-center md:gap-0 gap-2">
+                  <h4 className="text-gray-700 lg:text-lg font-bold">
+                    <span className="text-gray-800 font-bold">
+                      Creation Date:{" "}
+                    </span>{" "}
+                    {new Date(organizer?.createdAt).toLocaleDateString("en-UK")}
+                  </h4>
+
+                  <button
+                    onClick={() => setUpdate(true)}
+                    className="btn bg-cyan-600 border-none text-lg text-white font-bold rounded-md px-8 flex gap-2 items-center"
+                  >
+                    <MdUpdate className="text-2xl" />
+                    <span>Update Profile</span>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </>
-      ) : (
-        <>
-          <h2 className="text-center md:text-4xl text-2xl font-extrabold mb-6">
-            Update Profile
-          </h2>
-          <div className="card bg-base-100 bg-opacity-70 lg:w-11/12 w-full mx-auto rounded-box shadow-md hover:shadow-lg border border-gray-200">
-            <form className="card-body pt-5 pb-0" onSubmit={handleUpdate}>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-bold">Name</span>
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  defaultValue={organizer?.name}
-                  className="input input-bordered w-full"
-                />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-bold">Contact: </span>
-                </label>
-                <input
-                  type="number"
-                  name="contact"
-                  defaultValue={organizer?.contact || "01818788816"}
-                  className="input input-bordered w-full"
-                />
-              </div>
-
-              <div className="form-control w-full mt-3 mb-1">
-                <input
-                  type="file"
-                  name="image"
-                  className="file-input file-input-bordered file-input-primary text-gray-700 font-semibold h-10 lg:w-1/2 w-full"
-                />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-bold">Email</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  defaultValue={organizer?.email}
-                  readOnly
-                  className="input input-bordered w-full"
-                />
-              </div>
-
-              <div className="my-6 flex gap-3 justify-center items-center">
+          </>
+        ) : (
+          <>
+            <div className="md:card bg-base-100 bg-opacity-70 w-full md:rounded-xl shadow-md hover:shadow-lg border border-gray-200">
+              <form className="card-body pt-5 pb-0" onSubmit={handleUpdate}>
                 <div className="form-control">
-                  <button className="btn bg-emerald-500 border-none text-white/90 text-lg rounded-md font-bold px-5">
-                    Save Changes
-                  </button>
+                  <label className="label">
+                    <span className="label-text font-bold">Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    defaultValue={organizer?.name}
+                    className="input input-bordered w-full"
+                  />
                 </div>
 
-                <div>
-                  <button
-                    className="btn bg-rose-500 text-lg text-white font-bold px-6"
-                    onClick={() => setUpdate(false)}
-                  >
-                    Cancel
-                  </button>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text font-bold">Contact: </span>
+                  </label>
+                  <input
+                    type="number"
+                    name="contact"
+                    defaultValue={organizer?.contact || "+8801818788816"}
+                    className="input input-bordered w-full"
+                  />
                 </div>
-              </div>
-            </form>
-          </div>
-        </>
-      )}
-    </div>
+
+                <div className="form-control w-full mt-3 mb-1">
+                  <input
+                    type="file"
+                    name="image"
+                    className="file-input file-input-bordered file-input-info text-gray-700 font-semibold h-10 lg:w-1/2 w-full"
+                  />
+                </div>
+
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text font-bold">Email</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    defaultValue={organizer?.email}
+                    readOnly
+                    className="input input-bordered w-full"
+                  />
+                </div>
+
+                <div className="my-6 flex gap-3 items-center">
+                  <div className="form-control">
+                    <button className="btn bg-purple-600 border-none text-white/90 text-lg rounded-md font-bold flex gap-1 items-center md:px-4">
+                      <span>Save Changes</span>{" "}
+                      <HiSaveAs className="md:text-xl text-lg" />
+                    </button>
+                  </div>
+
+                  <div>
+                    <button
+                      className="btn bg-rose-500 text-lg text-white font-bold md:px-6 flex gap-1 items-center"
+                      onClick={() => setUpdate(false)}
+                    >
+                      <MdCancel className="md:text-2xl text-xl" />
+                      <span>Cancel</span>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

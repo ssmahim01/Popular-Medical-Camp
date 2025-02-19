@@ -89,13 +89,13 @@ const PaymentHistory = () => {
                 </td>
 
                 <td>
-                    <p className={`badge text-white font-semibold ${payment?.paymentStatus === "Paid" ? "badge-primary" : "badge-neutral"}`}>
+                    <p className={`badge text-white font-semibold ${payment?.paymentStatus === "Paid" ? "bg-purple-600" : "badge-neutral"}`}>
                       {payment?.paymentStatus}
                     </p>
                 </td>
 
                 <td>
-                    <p className={`badge text-white font-semibold ${payment?.confirmationStatus === "Confirmed" ? "badge-success" : "badge-warning"}`}>
+                    <p className={`badge text-white font-semibold ${payment?.confirmationStatus === "Confirmed" ? "badge-success" : "badge-neutral"}`}>
                       {payment?.confirmationStatus}
                     </p>
                 </td>
