@@ -1,27 +1,30 @@
 <div align="center">
-  <img width="100%" height="360" src="https://github.com/ssmahim01/Popular-Medical-Camp/blob/main/public/medical-camp-management-system.png" />
+  <img width="100%" height="360" src="/public/image-of-popular-medical-camp-website.png" />
 </div>
 
 ---
 
 # 🏥 Popular Medical Camp
 
-**Popular Medical Camp** is a web-based application designed for managing participant registrations, payments, and confirmation statuses for medical camp events. The platform enables organizers to efficiently track and manage participants.
+**Popular Medical Camp** is a web-based application for managing participant registrations, payments, and confirmation statuses at medical camp events. It helps organizers efficiently track and manage participants. Additionally, an AI-powered image generation API is implemented, allowing both user roles to generate images. This feature is accessible after login.
 
 [![Website](https://img.shields.io/badge/Live%20Demo-Popular%20Medical%20Camp-brightgreen)](https://popular-medical-camp.web.app)  
 [![Backend Repository](https://img.shields.io/badge/Backend%20Repository-Click%20Here-blue)](https://github.com/ssmahim01/popular-medical-camp-server)  
 
 ---
 
-## 🚀 Core Features
+## 🚀 Features
 
-✔ **Secure Organizer Login** – Protected login system for event organizers.  
-✔ **Dynamic Search** – Search participants by name, camp, payment, or status.  
-✔ **Pagination** – Organized data display with adjustable entries per page.  
-✔ **Participant Management** – Update confirmation status, payments, and cancellations.  
-✔ **Real-Time Updates** – Uses React Query for efficient data synchronization.  
-✔ **Fully Responsive** – Optimized UI for all devices.  
-✔ **User-Friendly Dashboard** – Intuitive interface with clean visuals.  
+1. **Secure Login for Organizers:** Organizers can log in securely to manage camp registrations.
+2. **Search Functionality:** Search participants by name, camp name, fees, or statuses with a dynamic search bar.
+3. **Pagination:** View registered participants with a paginated interface for better data navigation.
+4. **Participant Confirmation:** Change the confirmation status of participants directly from the interface.
+5. **Payment Status Tracking:** Easily identify participants who have paid or are yet to pay.
+6. **Cancel Registrations:** Cancel registrations for participants with pending payment or unconfirmed status.
+7. **Real-Time Updates:** Data is fetched and updated in real-time with React Query.
+8. **Custom Items Per Page:** Choose how many participants are displayed per page with adjustable pagination.
+9. **Responsive Design:** Fully responsive layout for seamless use across devices.
+10. **User-Friendly Dashboard:** Intuitive design with clean visuals for organizers to manage tasks efficiently.
 
 ---
 
