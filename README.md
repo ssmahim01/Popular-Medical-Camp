@@ -29,7 +29,7 @@
 
 | Email        | Password |
 |----------------|-------------|
-| **mahim1234@gmail.com**   | Mahim@1234 |
+| **📧 mahim1234@gmail.com**   | Mahim@1234 |
 
 ---
 
