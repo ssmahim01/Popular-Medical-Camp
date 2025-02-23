@@ -1,15 +1,13 @@
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import { useAxiosSecure } from "../../hooks/useAxiosSecure";
-import { useState } from "react";
 import ShowImages from "../../components/ShowAiImages/ShowImages";
 import useImages from "../../hooks/useImages";
 import Loading from "../../components/Loading/Loading";
 
 const GenerateImage = () => {
-  const { user, logInWithGoogle, loading, setLoading } = useAuth();
+  const { user, logInWithGoogle, loading } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const [imageData, setImageData] = useState([]);
   const [, , refetch] = useImages();
   // console.log(imageData.data.url);
   const imgBB_api = `https://api.imgbb.com/1/upload?key=${
@@ -47,12 +45,14 @@ const GenerateImage = () => {
   };
 
   const options = [
+    "Real-life",
     "Painting",
     "Animated-image",
     "Wallpaper",
     "Poster",
     "Digital-art",
     "Realistic-image",
+    "Traditional-image",
   ];
 
   const validationForm = (prompt, category) => {
@@ -62,10 +62,6 @@ const GenerateImage = () => {
         "Select a Category from the dropdown",
         "error"
       );
-      return false;
-    }
-    if (!prompt) {
-      Swal.fire("Write a Prompt", "Write a prompt in the input", "error");
       return false;
     }
     if (!prompt) {
@@ -104,8 +100,8 @@ const GenerateImage = () => {
     const formData = new FormData();
     formData.append(
       "image",
-      new Blob([buffer], { type: "image/png" }),
-      `${prompt}.png`
+      new Blob([buffer], { type: "image/jpeg" }),
+      `${prompt}.jpg`
     );
 
     const response = await fetch(imgBB_api, {
@@ -114,7 +110,6 @@ const GenerateImage = () => {
     });
     const data = await response.json();
     // console.log(data);
-    setImageData(data);
     return data;
   };
 
@@ -127,28 +122,27 @@ const GenerateImage = () => {
 
     if (!validationForm(prompt, category)) return;
     if (!checkUser()) return;
-    if (!getImageBuffer(prompt, category)) return;
-    setLoading(true);
     // console.log({ prompt, category });
 
+    const imageResponse = await getImageBuffer(prompt, category);
+    if (!imageResponse) return;
+    
     const generatedData = {
       username: user?.displayName || "Anonymous",
       email: user?.email,
-      userImg:
-        user?.photoURL || "https://img.icons8.com/stickers/40/test-account.png",
+      userImg: user?.photoURL || "https://img.icons8.com/stickers/40/test-account.png",
       prompt,
       category,
-      originalImg: imageData.data.url,
-      generatedImg: imageData.data.thumb.url,
-      mediumImg: imageData.data.medium.url,
+      originalImg: imageResponse.data.url,
+      generatedImg: imageResponse.data.thumb.url,
+      mediumImg: imageResponse.data.medium.url,
       createdAt: new Date().toISOString(),
-    };
+    };    
 
     const response = await axiosSecure.post("/generate", generatedData);
     if (response.data.insertedId) {
       form.reset();
       refetch();
-      setLoading(false);
       Swal.fire({
         position: "center",
         icon: "success",

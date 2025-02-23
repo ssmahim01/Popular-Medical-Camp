@@ -25,6 +25,10 @@
 
 ---
 
+## Organizer Credentials
+
+
+
 ## 🛠️ Technologies Used
 
 | Category        | Technologies |
