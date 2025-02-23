@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="100%" height="340" src="https://github.com/ssmahim01/Popular-Medical-Camp/blob/main/public/medical-camp-management-system.png" />
+  <img width="100%" height="360" src="https://github.com/ssmahim01/Popular-Medical-Camp/blob/main/public/medical-camp-management-system.png" />
 </div>
 
 ---
@@ -25,9 +25,13 @@
 
 ---
 
-## Organizer Credentials
+## 📌 Organizer Credentials
 
+| Email        | Password |
+|----------------|-------------|
+| **mahim1234@gmail.com**   | Mahim@1234 |
 
+---
 
 ## 🛠️ Technologies Used
 
