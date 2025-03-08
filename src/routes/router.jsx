@@ -23,6 +23,7 @@ import GenerateImage from "../pages/GenerateImage/GenerateImage";
 import OrganizerHome from "../pages/DashboardPages/Organizer/OrganizerHome";
 import ParticipantHome from "../pages/DashboardPages/Participant/ParticipantHome";
 import Services from "../pages/Services/Services";
+import Feedbacks from "../pages/Feedbacks/Feedbacks";
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
             {
                 path: "/services",
                 element: <Services />
+            },
+            {
+                path: "/feedbacks",
+            element: <Feedbacks />
             },
             {
                 path: "/camp-details/:campId",

@@ -1,7 +1,7 @@
 import { FaEdit, FaHistory, FaHome, FaUserCircle } from "react-icons/fa";
 import logo from "../../assets/images/popular-medical-camp-logo.png";
 import { IoIosAddCircle } from "react-icons/io";
-import { MdAssignmentAdd, MdManageSearch, MdMedicalServices, MdMenuBook } from "react-icons/md";
+import { MdAssignmentAdd, MdFeedback, MdManageSearch, MdMedicalServices, MdMenuBook } from "react-icons/md";
 import {
   Link,
   NavLink,
@@ -141,6 +141,11 @@ const Dashboard = () => {
           <NavLink to="/services">
             <h3 className="flex gap-2 items-center">
               <MdMedicalServices className="text-lg" /> Services
+            </h3>
+          </NavLink>
+          <NavLink to="/feedbacks">
+            <h3 className="flex gap-2 items-center">
+              <MdFeedback className="text-lg" /> Feedbacks
             </h3>
           </NavLink>
           <NavLink to="/generate-image">

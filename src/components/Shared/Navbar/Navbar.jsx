@@ -35,9 +35,9 @@ const Navbar = () => {
             src={PopularMedicalLogo}
             alt="Logo of Popular Medical"
           />
-          <h3 className="md:block hidden text-2xl font-extrabold">
+          <Link to="/" className="md:block hidden text-2xl font-extrabold">
             Popular Medical
-          </h3>
+          </Link>
         </div>
       </div>
       <div className="flex-none">
@@ -46,6 +46,7 @@ const Navbar = () => {
           <NavLink to="/available-camps">Available Camps</NavLink>
           <div className="hidden md:flex gap-4 items-center">
             <NavLink to="/services">Services</NavLink>
+            <NavLink to="/feedbacks">Feedbacks</NavLink>
           </div>
         </div>
         {user ? (

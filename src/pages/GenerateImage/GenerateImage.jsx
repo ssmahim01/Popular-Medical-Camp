@@ -4,9 +4,12 @@ import { useAxiosSecure } from "../../hooks/useAxiosSecure";
 import ShowImages from "../../components/ShowAiImages/ShowImages";
 import useImages from "../../hooks/useImages";
 import Loading from "../../components/Loading/Loading";
+import { useState } from "react";
 
 const GenerateImage = () => {
-  const { user, logInWithGoogle, loading } = useAuth();
+  const { user, logInWithGoogle } = useAuth();
+  const [loading, setLoading] = useState(false);
+
   const axiosSecure = useAxiosSecure();
   const [, , refetch] = useImages();
   // console.log(imageData.data.url);
@@ -122,27 +125,30 @@ const GenerateImage = () => {
 
     if (!validationForm(prompt, category)) return;
     if (!checkUser()) return;
+    setLoading(true);
     // console.log({ prompt, category });
 
     const imageResponse = await getImageBuffer(prompt, category);
     if (!imageResponse) return;
-    
+
     const generatedData = {
       username: user?.displayName || "Anonymous",
       email: user?.email,
-      userImg: user?.photoURL || "https://img.icons8.com/stickers/40/test-account.png",
+      userImg:
+        user?.photoURL || "https://img.icons8.com/stickers/40/test-account.png",
       prompt,
       category,
       originalImg: imageResponse.data.url,
       generatedImg: imageResponse.data.thumb.url,
       mediumImg: imageResponse.data.medium.url,
       createdAt: new Date().toISOString(),
-    };    
+    };
 
     const response = await axiosSecure.post("/generate", generatedData);
     if (response.data.insertedId) {
       form.reset();
       refetch();
+      setLoading(false);
       Swal.fire({
         position: "center",
         icon: "success",
@@ -153,7 +159,18 @@ const GenerateImage = () => {
     }
   };
 
-  if (loading) return <Loading />;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center pt-20">
+        <div className="flex lg:w-[420px] w-96 h-96 flex-col gap-4">
+        <div className="skeleton h-44 w-full"></div>
+        <div className="skeleton h-7 w-28"></div>
+        <div className="skeleton h-6 w-full"></div>
+        <div className="skeleton h-6 w-full"></div>
+      </div>
+      </div>
+    );
+  }
 
   return (
     <div className="lg:w-4/5 w-11/12 mx-auto py-10">
