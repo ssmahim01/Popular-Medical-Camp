@@ -49,22 +49,22 @@ const Dashboard = () => {
     <div className="flex lg:flex-row flex-col">
       {/* Sidebar */}
       <div
-        className={`fixed lg:relative top-0 left-0 z-40 min-h-screen w-64 bg-purple-100 transition-transform shadow-md transform ${
+        className={`fixed lg:relative top-0 left-0 z-40 w-64 h-[660px] overflow-y-auto transition-transform shadow-md transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 lg:w-72 lg:min-h-screen`}
+        } lg:translate-x-0 lg:w-72`}
       >
+          <Link to="/">
         <div className="p-4 flex items-center border-b border-gray-300 shadow-sm pb-3">
           <img
             className="w-9 h-9 object-cover"
             src={logo}
             alt="Popular Medical Logo"
           />
-          <Link to="/">
-            <button className="btn btn-ghost px-1 rounded-md text-xl text-gray-800 font-extrabold">
+            <button className="px-1 rounded-md text-xl text-gray-800 font-extrabold">
               Popular Medical
             </button>
-          </Link>
         </div>
+          </Link>
 
         <ul className="menu *:font-bold flex flex-col space-y-7 mt-3 p-4">
           {organizer ? (
@@ -172,7 +172,7 @@ const Dashboard = () => {
 
       {/* Content */}
       <div
-        className={`${location.pathname !== "/dashboard/organizer-profile" && location.pathname !== "/dashboard/participant-profile" && location.pathname !== "/dashboard/organizer-home" && location.pathname !== "/dashboard/participant-home" ? "md:p-5 p-4" : ""} min-h-screen flex-1 bg-gray-100`}
+        className={`${location.pathname !== "/dashboard/organizer-profile" && location.pathname !== "/dashboard/participant-profile" && location.pathname !== "/dashboard/organizer-home" && location.pathname !== "/dashboard/participant-home" ? "md:p-5 p-4" : ""} overflow-y-auto h-[660px] flex-1 bg-gray-50`}
         onClick={() => isSidebarOpen && setIsSidebarOpen(false)}
       >
         <Outlet />
