@@ -1,7 +1,13 @@
 import { FaEdit, FaHistory, FaHome, FaUserCircle } from "react-icons/fa";
 import logo from "../../assets/images/popular-medical-camp-logo.png";
 import { IoIosAddCircle } from "react-icons/io";
-import { MdAssignmentAdd, MdFeedback, MdManageSearch, MdMedicalServices, MdMenuBook } from "react-icons/md";
+import {
+  MdAssignmentAdd,
+  MdFeedback,
+  MdManageSearch,
+  MdMedicalServices,
+  MdMenuBook,
+} from "react-icons/md";
 import {
   Link,
   NavLink,
@@ -46,118 +52,191 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex lg:flex-row flex-col">
+    <div className="flex flex-col lg:flex-row h-screen w-screen bg-gray-100">
       {/* Sidebar */}
       <div
-        className={`fixed lg:relative top-0 left-0 z-40 w-64 h-[660px] overflow-y-auto transition-transform shadow-md transform ${
+        className={`lg:sticky top-0 z-40 w-64 lg:w-72 bg-purple-50 shadow-lg transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 lg:w-72`}
+        } lg:translate-x-0 h-screen overflow-y-auto`}
       >
-          <Link to="/">
-        <div className="p-4 flex items-center border-b border-gray-300 shadow-sm pb-3">
-          <img
-            className="w-9 h-9 object-cover"
-            src={logo}
-            alt="Popular Medical Logo"
-          />
-            <button className="px-1 rounded-md text-xl text-gray-800 font-extrabold">
+        <Link to="/">
+          <div className="p-4 flex items-center border-b border-gray-200 shadow-sm">
+            <img
+              className="w-9 h-9 object-cover"
+              src={logo}
+              alt="Popular Medical Logo"
+            />
+            <span className="ml-2 text-xl font-extrabold text-gray-800">
               Popular Medical
-            </button>
-        </div>
-          </Link>
+            </span>
+          </div>
+        </Link>
 
-        <ul className="menu *:font-bold flex flex-col space-y-7 mt-3 p-4">
+        <ul className="menu flex flex-col font-semibold space-y-4 mt-4 p-4">
           {organizer ? (
             <>
-              <NavLink to="/dashboard/organizer-home">
-                <h3 className="flex gap-2 items-center">
-                  <FaHouseMedical className="text-lg" /> Dashboard
-                </h3>
+              <NavLink
+                to="/dashboard/organizer-home"
+                className={({ isActive }) =>
+                  `flex items-center gap-2 text-lg ${
+                    isActive ? "text-purple-600" : "text-gray-700"
+                  } hover:text-purple-600`
+                }
+              >
+                <FaHouseMedical className="text-lg" /> Dashboard
               </NavLink>
-              <NavLink to="/dashboard/organizer-profile">
-                <h3 className="flex gap-2 items-center">
-                  <FaUserCircle className="text-lg" /> Organizer Profile
-                </h3>
+              <NavLink
+                to="/dashboard/organizer-profile"
+                className={({ isActive }) =>
+                  `flex items-center gap-2 text-lg ${
+                    isActive ? "text-purple-600" : "text-gray-700"
+                  } hover:text-purple-600`
+                }
+              >
+                <FaUserCircle className="text-lg" /> Organizer Profile
               </NavLink>
-              <NavLink to="/dashboard/add-camp">
-                <h3 className="flex gap-2 items-center">
-                  <IoIosAddCircle className="text-lg" /> Add A Camp
-                </h3>
+              <NavLink
+                to="/dashboard/add-camp"
+                className={({ isActive }) =>
+                  `flex items-center gap-2 text-lg ${
+                    isActive ? "text-purple-600" : "text-gray-700"
+                  } hover:text-purple-600`
+                }
+              >
+                <IoIosAddCircle className="text-lg" /> Add A Camp
               </NavLink>
-              <NavLink to="/dashboard/manage-camps">
-                <h3 className="flex gap-2 items-center">
-                  <FaEdit className="text-lg" /> Manage Camps
-                </h3>
+              <NavLink
+                to="/dashboard/manage-camps"
+                className={({ isActive }) =>
+                  `flex items-center gap-2 text-lg ${
+                    isActive ? "text-purple-600" : "text-gray-700"
+                  } hover:text-purple-600`
+                }
+              >
+                <FaEdit className="text-lg" /> Manage Camps
               </NavLink>
-              <NavLink to="/dashboard/manage-registered-camps">
-                <h3 className="flex gap-2 items-center">
-                  <MdManageSearch className="text-lg" /> Manage Registered Camps
-                </h3>
+              <NavLink
+                to="/dashboard/manage-registered-camps"
+                className={({ isActive }) =>
+                  `flex items-center gap-2 text-lg ${
+                    isActive ? "text-purple-600" : "text-gray-700"
+                  } hover:text-purple-600`
+                }
+              >
+                <MdManageSearch className="text-lg" /> Manage Registered Camps
               </NavLink>
-
-              <div className="divider"></div>
+              <div className="divider my-2"></div>
             </>
           ) : (
             <>
-              <NavLink to="/dashboard/participant-home">
-                <h3 className="flex gap-2 items-center">
-                  <FaHouseMedical className="text-lg" /> Dashboard
-                </h3>
+              <NavLink
+                to="/dashboard/participant-home"
+                className={({ isActive }) =>
+                  `flex items-center gap-2 text-lg ${
+                    isActive ? "text-purple-600" : "text-gray-700"
+                  } hover:text-purple-600`
+                }
+              >
+                <FaHouseMedical className="text-lg" /> Dashboard
               </NavLink>
-              <NavLink to="/dashboard/participant-profile">
-                <h3 className="flex gap-2 items-center">
-                  <BsFillPersonFill className="text-lg" /> Participant Profile
-                </h3>
+              <NavLink
+                to="/dashboard/participant-profile"
+                className={({ isActive }) =>
+                  `flex items-center gap-2 text-lg ${
+                    isActive ? "text-purple-600" : "text-gray-700"
+                  } hover:text-purple-600`
+                }
+              >
+                <BsFillPersonFill className="text-lg" /> Participant Profile
               </NavLink>
-              <NavLink to="/dashboard/analytics">
-                <h3 className="flex gap-2 items-center">
-                  <IoAnalyticsSharp className="text-lg" /> Analytics
-                </h3>
+              <NavLink
+                to="/dashboard/analytics"
+                className={({ isActive }) =>
+                  `flex items-center gap-2 text-lg ${
+                    isActive ? "text-purple-600" : "text-gray-700"
+                  } hover:text-purple-600`
+                }
+              >
+                <IoAnalyticsSharp className="text-lg" /> Analytics
               </NavLink>
-              <NavLink to="/dashboard/registered-camps">
-                <h3 className="flex gap-2 items-center">
-                  <MdAssignmentAdd className="text-lg" /> Registered Camps
-                </h3>
+              <NavLink
+                to="/dashboard/registered-camps"
+                className={({ isActive }) =>
+                  `flex items-center gap-2 text-lg ${
+                    isActive ? "text-purple-600" : "text-gray-700"
+                  } hover:text-purple-600`
+                }
+              >
+                <MdAssignmentAdd className="text-lg" /> Registered Camps
               </NavLink>
-              <NavLink to="/dashboard/payment-history">
-                <h3 className="flex gap-2 items-center">
-                  <FaHistory className="text-lg" /> Payment History
-                </h3>
+              <NavLink
+                to="/dashboard/payment-history"
+                className={({ isActive }) =>
+                  `flex items-center gap-2 text-lg ${
+                    isActive ? "text-purple-600" : "text-gray-700"
+                  } hover:text-purple-600`
+                }
+              >
+                <FaHistory className="text-lg" /> Payment History
               </NavLink>
-
-              <div className="divider"></div>
+              <div className="divider my-2"></div>
             </>
           )}
-          <NavLink to="/">
-            <h3 className="flex gap-2 items-center">
-              <FaHome className="text-lg" /> Home Page
-            </h3>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `flex items-center gap-2 text-lg ${
+                isActive ? "text-purple-600" : "text-gray-700"
+              } hover:text-purple-600`
+            }
+          >
+            <FaHome className="text-lg" /> Home Page
           </NavLink>
-          <NavLink to="/available-camps">
-            <h3 className="flex gap-2 items-center">
-              <MdMenuBook className="text-lg" /> Available Camps
-            </h3>
+          <NavLink
+            to="/available-camps"
+            className={({ isActive }) =>
+              `flex items-center gap-2 text-lg ${
+                isActive ? "text-purple-600" : "text-gray-700"
+              } hover:text-purple-600`
+            }
+          >
+            <MdMenuBook className="text-lg" /> Available Camps
           </NavLink>
-          <NavLink to="/services">
-            <h3 className="flex gap-2 items-center">
-              <MdMedicalServices className="text-lg" /> Services
-            </h3>
+          <NavLink
+            to="/services"
+            className={({ isActive }) =>
+              `flex items-center gap-2 text-lg ${
+                isActive ? "text-purple-600" : "text-gray-700"
+              } hover:text-purple-600`
+            }
+          >
+            <MdMedicalServices className="text-lg" /> Services
           </NavLink>
-          <NavLink to="/feedbacks">
-            <h3 className="flex gap-2 items-center">
-              <MdFeedback className="text-lg" /> Feedbacks
-            </h3>
+          <NavLink
+            to="/feedbacks"
+            className={({ isActive }) =>
+              `flex items-center gap-2 text-lg ${
+                isActive ? "text-purple-600" : "text-gray-700"
+              } hover:text-purple-600`
+            }
+          >
+            <MdFeedback className="text-lg" /> Feedbacks
           </NavLink>
-          <NavLink to="/generate-image">
-            <h3 className="flex gap-2 items-center">
+          <NavLink
+            to="/generate-image"
+            className={({ isActive }) =>
+              `flex items-center gap-2 text-lg ${
+                isActive ? "text-purple-600" : "text-gray-700"
+              } hover:text-purple-600`
+            }
+          >
             <RiAiGenerate className="text-lg" /> Generate Image
-            </h3>
           </NavLink>
           <button
             onClick={handleLogout}
-            className="text-white w-full btn bg-rose-500 border-none flex gap-2 items-center rounded-md"
+            className="mt-4 w-full btn bg-rose-500 text-white border-none flex items-center gap-2 text-lg rounded-md hover:bg-rose-600 transition-colors"
           >
-            <TbLogout2 className="text-xl font-bold" /> Logout
+            <TbLogout2 className="text-xl" /> Logout
           </button>
         </ul>
       </div>
@@ -165,14 +244,14 @@ const Dashboard = () => {
       {/* Sidebar Toggle Button */}
       <button
         onClick={toggleSidebar}
-        className="lg:hidden fixed top-4 right-4 z-50 bg-violet-300 p-2 rounded-md shadow-lg"
+        className="lg:hidden fixed top-4 right-4 z-50 bg-violet-300 p-2 rounded-md shadow-lg hover:bg-violet-400 transition-colors"
       >
         <MdMenuBook className="text-2xl" />
       </button>
 
       {/* Content */}
       <div
-        className={`${location.pathname !== "/dashboard/organizer-profile" && location.pathname !== "/dashboard/participant-profile" && location.pathname !== "/dashboard/organizer-home" && location.pathname !== "/dashboard/participant-home" ? "md:p-5 p-4" : ""} overflow-y-auto h-[660px] flex-1 bg-gray-50`}
+        className={`${location.pathname !== "/dashboard/organizer-profile" && location.pathname !== "/dashboard/participant-profile" && location.pathname !== "/dashboard/organizer-home" && location.pathname !== "/dashboard/participant-home" ? "md:p-5 p-4" : ""} flex-1 h-screen w-full py-3 overflow-y-auto bg-gray-50`}
         onClick={() => isSidebarOpen && setIsSidebarOpen(false)}
       >
         <Outlet />
