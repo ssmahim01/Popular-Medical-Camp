@@ -236,6 +236,7 @@ const Dashboard = () => {
 
           <div className="divider my-2"></div>
 
+          <div className="flex flex-col">
           <div className="flex gap-2 items-center">
             <div className="w-12 h-12">
               <img
@@ -247,7 +248,9 @@ const Dashboard = () => {
             </div>
 
             <div className="flex flex-col">
-              <h4 className="text-gray-800 font-semibold text-base">{user?.displayName}</h4>
+              <h4 className="text-gray-800 font-semibold text-base">
+                {user?.displayName}
+              </h4>
               <p className="text-gray-600 font-medium text-xs">{user?.email}</p>
             </div>
           </div>
@@ -257,6 +260,7 @@ const Dashboard = () => {
           >
             <TbLogout2 className="text-xl" /> Logout
           </button>
+          </div>
         </ul>
       </div>
 
@@ -277,7 +281,7 @@ const Dashboard = () => {
           location.pathname !== "/dashboard/participant-home"
             ? "md:p-5 p-4"
             : ""
-        } flex-1 h-screen w-full py-3 overflow-y-auto bg-gray-50`}
+        } flex-1 h-screen w-full overflow-y-auto bg-gray-50`}
         onClick={() => isSidebarOpen && setIsSidebarOpen(false)}
       >
         <Outlet />
