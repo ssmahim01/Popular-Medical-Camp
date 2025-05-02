@@ -263,7 +263,7 @@ const Dashboard = () => {
       {/* Sidebar Toggle Button */}
       <button
         onClick={toggleSidebar}
-        className="lg:hidden fixed top-4 right-4 z-50 bg-violet-300 p-2 rounded-md shadow-lg hover:bg-violet-400 transition-colors"
+        className="lg:hidden fixed top-4 right-4 z-50 bg-purple-300 p-2 rounded-md shadow-lg hover:bg-purple-400 transition-colors"
       >
         <MdMenuBook className="text-2xl" />
       </button>
