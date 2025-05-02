@@ -9,8 +9,8 @@ const Footer = () => {
   const [organizer] = useOrganizer();
 
   return (
-    <footer className="bg-purple-100">
-      <div className="flex gap-8 flex-row justify-between flex-wrap p-10 lg:w-[86%] w-11/12 mx-auto">
+    <footer className="bg-gradient-to-r from-purple-50 to-neutral-200">
+      <div className="flex gap-8 flex-col lg:flex-row justify-between flex-wrap md:py-14 md:px-10 py-10 px-5 lg:w-[86%] w-11/12 mx-auto">
         <div className="space-y-2 flex-1">
           <div className="flex gap-x-2 items-center">
             <img
@@ -25,7 +25,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <p className="text-gray-600 leading-relaxed text-sm">
+            <p className="text-neutral-600 leading-relaxed text-sm">
               Popular Medical Camp is a comprehensive medical camp management
               system designed to provide essential healthcare services to
               participants. Users can register for preferred camps via an online
@@ -38,10 +38,10 @@ const Footer = () => {
 
            {/* Connect With Me Section */}
         <div className="w-full pt-2">
-          <h3 className="text-lg font-semibold text-gray-800 mb-2">
+          <h3 className="text-lg font-semibold text-neutral-800 mb-2">
             Connect With Me
           </h3>
-          <div className="flex justify-center md:justify-start gap-4">
+          <div className="flex justify-start gap-4">
             <Link
               to="https://www.linkedin.com/in/sayman-shakil-mahim"
               target="_blank"
@@ -52,7 +52,7 @@ const Footer = () => {
             <Link
               to="https://github.com/ssmahim01"
               target="_blank"
-              className="hover:text-gray-900 transition-colors"
+              className="hover:text-neutral-900 transition-colors"
             >
               <SiGithub className="text-2xl" />
             </Link>
@@ -74,28 +74,28 @@ const Footer = () => {
         </div>
         </div>
 
-        <div className="lg:px-32 md:px-20 px-6 flex flex-row flex-wrap gap-10">
+        <div className="lg:px-32 flex flex-row flex-wrap gap-10">
           {/* Quick Links Section */}
-        <div>
-          <h3 className="text-lg font-semibold text-gray-800 mb-2">
+        <div className="font-medium">
+          <h3 className="text-lg font-semibold text-neutral-800 mb-2">
             Quick Links
           </h3>
           <nav className="flex flex-col gap-2">
             <NavLink
               to="/"
-              className="text-gray-700 hover:text-purple-600 w-3/5 transition-colors"
+              className="text-neutral-700 hover:text-purple-600 w-3/5 transition-colors"
             >
               Home
             </NavLink>
             <NavLink
               to="/available-camps"
-              className="text-gray-700 hover:text-purple-600 w-3/5 transition-colors"
+              className="text-neutral-700 hover:text-purple-600 w-3/5 transition-colors"
             >
               Available Camps
             </NavLink>
             <NavLink
               to="/feedbacks"
-              className="text-gray-700 hover:text-purple-600 w-3/5 transition-colors"
+              className="text-neutral-700 hover:text-purple-600 w-3/5 transition-colors"
             >
               Feedbacks
             </NavLink>
@@ -105,7 +105,7 @@ const Footer = () => {
                   ? "/dashboard/organizer-home"
                   : "/dashboard/participant-home"
               }`}
-              className="text-gray-700 hover:text-purple-600 w-3/5 transition-colors"
+              className="text-neutral-700 hover:text-purple-600 w-3/5 transition-colors"
             >
               Dashboard
             </NavLink>
@@ -113,20 +113,20 @@ const Footer = () => {
         </div>
 
         {/* Services Section */}
-        <div>
-          <h3 className="text-lg font-semibold text-gray-800 mb-2">
+        <div className="font-medium">
+          <h3 className="text-lg font-semibold text-neutral-800 mb-2">
             Provided Services
           </h3>
           <nav className="flex flex-col gap-2">
             <NavLink
               to="/services"
-              className="text-gray-700 hover:text-purple-600 w-3/5 transition-colors"
+              className="text-neutral-700 hover:text-purple-600 w-3/5 transition-colors"
             >
               Services
             </NavLink>
             <NavLink
               to="/generate-image"
-              className="text-gray-700 hover:text-purple-600 w-3/5 transition-colors"
+              className="text-neutral-700 hover:text-purple-600 w-3/5 transition-colors"
             >
               Generate Image
             </NavLink>
