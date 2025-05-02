@@ -32,6 +32,7 @@ const Dashboard = () => {
   const { logoutUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const { user } = useAuth();
 
   const handleLogout = () => {
     logoutUser();
@@ -52,10 +53,10 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen w-screen bg-gray-100">
+    <div className="flex flex-col lg:flex-row h-screen w-screen bg-gray-50">
       {/* Sidebar */}
       <div
-        className={`lg:sticky top-0 z-40 w-64 lg:w-72 bg-purple-50 shadow-lg transition-transform duration-300 ease-in-out ${
+        className={`fixed lg:relative top-0 left-0 z-40 w-64 lg:w-72 bg-purple-50 shadow-lg transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 h-screen overflow-y-auto`}
       >
@@ -232,6 +233,24 @@ const Dashboard = () => {
           >
             <RiAiGenerate className="text-lg" /> Generate Image
           </NavLink>
+
+          <div className="divider my-2"></div>
+
+          <div className="flex gap-2 items-center">
+            <div className="w-12 h-12">
+              <img
+                alt={user ? user?.displayName : "Guest user"}
+                src={user?.photoURL}
+                className="w-full h-full border-4 border-cyan-600 rounded-full hover:border-cyan-700 object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+
+            <div className="flex flex-col">
+              <h4 className="text-gray-800 font-semibold text-base">{user?.displayName}</h4>
+              <p className="text-gray-600 font-medium text-xs">{user?.email}</p>
+            </div>
+          </div>
           <button
             onClick={handleLogout}
             className="mt-4 w-full btn bg-rose-500 text-white border-none flex items-center gap-2 text-lg rounded-md hover:bg-rose-600 transition-colors"
@@ -251,7 +270,14 @@ const Dashboard = () => {
 
       {/* Content */}
       <div
-        className={`${location.pathname !== "/dashboard/organizer-profile" && location.pathname !== "/dashboard/participant-profile" && location.pathname !== "/dashboard/organizer-home" && location.pathname !== "/dashboard/participant-home" ? "md:p-5 p-4" : ""} flex-1 h-screen w-full py-3 overflow-y-auto bg-gray-50`}
+        className={`${
+          location.pathname !== "/dashboard/organizer-profile" &&
+          location.pathname !== "/dashboard/participant-profile" &&
+          location.pathname !== "/dashboard/organizer-home" &&
+          location.pathname !== "/dashboard/participant-home"
+            ? "md:p-5 p-4"
+            : ""
+        } flex-1 h-screen w-full py-3 overflow-y-auto bg-gray-50`}
         onClick={() => isSidebarOpen && setIsSidebarOpen(false)}
       >
         <Outlet />
