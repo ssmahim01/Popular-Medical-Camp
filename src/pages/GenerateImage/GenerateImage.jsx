@@ -3,15 +3,16 @@ import useAuth from "../../hooks/useAuth";
 import { useAxiosSecure } from "../../hooks/useAxiosSecure";
 import ShowImages from "../../components/ShowAiImages/ShowImages";
 import useImages from "../../hooks/useImages";
-import Loading from "../../components/Loading/Loading";
 import { useState } from "react";
+import GenerateSkeleton from "./GenerateSkeleton";
+import GenerateImageSkeleton from "../../components/ShowAiImages/GenerateImageSkeleton";
 
 const GenerateImage = () => {
   const { user, logInWithGoogle } = useAuth();
   const [loading, setLoading] = useState(false);
 
   const axiosSecure = useAxiosSecure();
-  const [, , refetch] = useImages();
+  const [, isPending, refetch] = useImages();
   // console.log(imageData.data.url);
   const imgBB_api = `https://api.imgbb.com/1/upload?key=${
     import.meta.env.VITE_IMGBB_API_KEY
@@ -159,63 +160,64 @@ const GenerateImage = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center pt-20">
-        <div className="flex lg:w-[420px] w-96 h-96 flex-col gap-4">
-        <div className="skeleton h-44 w-full"></div>
-        <div className="skeleton h-7 w-28"></div>
-        <div className="skeleton h-6 w-full"></div>
-        <div className="skeleton h-6 w-full"></div>
-      </div>
-      </div>
-    );
-  }
-
   return (
     <div className="lg:w-4/5 w-11/12 mx-auto py-10">
-      <div className="flex justify-center py-5">
-        <img
-          src="medical-doctor.png"
-          alt="Image of a doctor"
-          className="animate-bounce w-32 h-32"
-        />
+      <div>
+        {isPending ? (
+          <GenerateImageSkeleton />
+        ) : (
+          <>
+            <div className="flex justify-center py-5">
+              <img
+                src="medical-doctor.png"
+                alt="Image of a doctor"
+                className="animate-bounce w-32 h-32"
+              />
+            </div>
+
+            <form
+              onSubmit={handleSubmit}
+              className="join w-full md:flex-row flex-col justify-center flex-wrap"
+            >
+              <div className="md:flex-1">
+                <div>
+                  <input
+                    name="prompt"
+                    className="input w-full input-bordered md:join-item outline-none focus:outline-none focus:border-primary"
+                    placeholder="Write , What's on your Mind🧠🧠"
+                  />
+                </div>
+              </div>
+              <div className="md:mt-0 mt-2 md:mx-0 mx-auto">
+                <select
+                  name="category"
+                  className="select select-bordered join-item max-w-max outline-none focus:outline-none focus:border-primary font-semibold"
+                >
+                  <option value="">Select a Category</option>
+                  {options.map((opt) => (
+                    <option key={opt} value={opt} className="font-semibold">
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+                <div className="indicator">
+                  <button className="btn join-item bg-emerald-500 border-none font-bold text-white rounded-md">
+                    Generate
+                  </button>
+                </div>
+              </div>
+            </form>
+          </>
+        )}
       </div>
 
-      <form
-        onSubmit={handleSubmit}
-        className="join w-full md:flex-row flex-col justify-center flex-wrap"
-      >
-        <div className="md:flex-1">
-          <div>
-            <input
-              name="prompt"
-              className="input w-full input-bordered md:join-item outline-none focus:outline-none focus:border-primary"
-              placeholder="Write , What's on your Mind🧠🧠"
-            />
-          </div>
+      {loading ? (
+        <div className="py-10">
+          <GenerateSkeleton />
         </div>
-        <div className="md:mt-0 mt-2 md:mx-0 mx-auto">
-          <select
-            name="category"
-            className="select select-bordered join-item max-w-max outline-none focus:outline-none focus:border-primary font-semibold"
-          >
-            <option value="">Select a Category</option>
-            {options.map((opt) => (
-              <option key={opt} value={opt} className="font-semibold">
-                {opt}
-              </option>
-            ))}
-          </select>
-          <div className="indicator">
-            <button className="btn join-item bg-emerald-500 border-none font-bold text-white rounded-md">
-              Generate
-            </button>
-          </div>
-        </div>
-      </form>
-
-      <ShowImages />
+      ) : (
+        <ShowImages />
+      )}
     </div>
   );
 };

@@ -3,19 +3,7 @@ import useImages from "../../hooks/useImages";
 import { TbCategoryFilled, TbPrompt } from "react-icons/tb";
 
 const ShowImages = () => {
-  const [aiImages, isPending] = useImages();
-  if (isPending) {
-    return (
-      <div className="flex justify-center items-center pt-20">
-        <div className="flex lg:w-[420px] w-96 h-96 flex-col gap-4">
-        <div className="skeleton h-44 w-full"></div>
-        <div className="skeleton h-7 w-28"></div>
-        <div className="skeleton h-6 w-full"></div>
-        <div className="skeleton h-6 w-full"></div>
-      </div>
-      </div>
-    );
-  }
+  const [aiImages] = useImages();
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:pt-10 md:pt-8 pt-5">
@@ -62,7 +50,7 @@ const ShowImages = () => {
               </p>
 
               <p className="mt-2 flex gap-2 items-center font-semibold text-gray-700">
-              <TbPrompt className="md:text-xl text-3xl text-gray-800" />
+                <TbPrompt className="md:text-xl text-3xl text-gray-800" />
                 <span className="text-lg">{image?.prompt}</span>
               </p>
             </div>

@@ -9,7 +9,7 @@ const Footer = () => {
   const [organizer] = useOrganizer();
 
   return (
-    <footer className="bg-gradient-to-r from-purple-50 to-neutral-200 border-t border-neutral-200">
+    <footer className="bg-gradient-to-l from-purple-100 to-neutral-200 border-t border-neutral-200">
       <div className="flex gap-12 flex-col lg:flex-row justify-between flex-wrap md:py-14 md:px-10 py-10 px-5 lg:w-[86%] w-11/12 mx-auto">
         <div className="space-y-2 flex-1">
           <Link to="/">
