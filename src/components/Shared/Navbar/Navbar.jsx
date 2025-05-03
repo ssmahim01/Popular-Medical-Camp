@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed z-10 border-b border-gray-300 lg:px-32 md:px-8 px-5 navbar bg-purple-100">
+    <div className="fixed z-10 border-b border-neutral-200 lg:px-32 md:px-8 px-5 navbar bg-gradient-to-r from-purple-50 to-neutral-200">
       <div className="flex-1">
         <div className="flex gap-2 items-center">
           <img

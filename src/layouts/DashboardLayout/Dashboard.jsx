@@ -53,10 +53,10 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen w-screen bg-gray-50">
+    <div className="flex flex-col lg:flex-row h-screen w-screen bg-neutral-50">
       {/* Sidebar */}
       <div
-        className={`fixed lg:relative top-0 left-0 z-40 w-64 lg:w-72 bg-purple-50 shadow-lg transition-transform duration-300 ease-in-out ${
+        className={`fixed lg:relative top-0 left-0 z-40 w-72 bg-gradient-to-r from-purple-100 to-neutral-100 shadow-lg transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 h-screen overflow-y-auto`}
       >
@@ -267,7 +267,7 @@ const Dashboard = () => {
       {/* Sidebar Toggle Button */}
       <button
         onClick={toggleSidebar}
-        className="lg:hidden fixed top-4 right-4 z-50 bg-purple-300 p-2 rounded-md shadow-lg hover:bg-purple-400 transition-colors"
+        className="lg:hidden fixed top-2 right-4 z-50 bg-neutral-200 p-2 rounded-md shadow-lg hover:bg-neutral-300 transition-colors"
       >
         <MdMenuBook className="text-2xl" />
       </button>
@@ -281,7 +281,7 @@ const Dashboard = () => {
           location.pathname !== "/dashboard/participant-home"
             ? "md:p-5 p-4"
             : ""
-        } flex-1 h-screen w-full overflow-y-auto bg-gray-50`}
+        } flex-1 h-screen w-full overflow-y-auto bg-gradient-to-l from-purple-50 to-neutral-100`}
         onClick={() => isSidebarOpen && setIsSidebarOpen(false)}
       >
         <Outlet />
