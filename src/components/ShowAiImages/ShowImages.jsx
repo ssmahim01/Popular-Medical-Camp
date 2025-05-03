@@ -2,14 +2,15 @@ import { FaCalendarCheck } from "react-icons/fa";
 import useImages from "../../hooks/useImages";
 import { TbCategoryFilled, TbPrompt } from "react-icons/tb";
 
-const ShowImages = () => {
+const ShowImages = ({latestImageRef}) => {
   const [aiImages] = useImages();
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:pt-10 md:pt-8 pt-5">
-      {aiImages.map((image) => (
+      {aiImages.map((image, index) => (
         <div
           key={image?._id}
+          ref={index === 0 ? latestImageRef : null}
           className="card bg-gray-100 shadow-md rounded-xl overflow-hidden transition-shadow hover:shadow-xl duration-200"
         >
           <figure className="w-full h-full">
@@ -17,6 +18,7 @@ const ShowImages = () => {
               className="w-full h-full object-cover rounded-t-lg"
               src={image?.originalImg}
               alt={image?.prompt}
+              referrerPolicy="no-referrer"
             />
           </figure>
 
@@ -51,7 +53,7 @@ const ShowImages = () => {
 
               <p className="mt-2 flex gap-2 items-center font-semibold text-gray-700">
                 <TbPrompt className="md:text-xl text-3xl text-gray-800" />
-                <span className="text-lg">{image?.prompt}</span>
+                <span className="text-lg">{image?.prompt.slice(0, 60)}...</span>
               </p>
             </div>
           </div>

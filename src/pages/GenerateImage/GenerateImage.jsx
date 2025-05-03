@@ -3,13 +3,14 @@ import useAuth from "../../hooks/useAuth";
 import { useAxiosSecure } from "../../hooks/useAxiosSecure";
 import ShowImages from "../../components/ShowAiImages/ShowImages";
 import useImages from "../../hooks/useImages";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import GenerateSkeleton from "./GenerateSkeleton";
 import GenerateImageSkeleton from "../../components/ShowAiImages/GenerateImageSkeleton";
 
 const GenerateImage = () => {
   const { user, logInWithGoogle } = useAuth();
   const [loading, setLoading] = useState(false);
+  const latestImageRef = useRef(null);
 
   const axiosSecure = useAxiosSecure();
   const [, isPending, refetch] = useImages();
@@ -157,6 +158,10 @@ const GenerateImage = () => {
         showConfirmButton: false,
         timer: 3000,
       });
+      // Scroll to the latest image
+      if (latestImageRef.current) {
+        latestImageRef.current.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -216,7 +221,7 @@ const GenerateImage = () => {
           <GenerateSkeleton />
         </div>
       ) : (
-        <ShowImages />
+        <ShowImages latestImageRef={latestImageRef} />
       )}
     </div>
   );
