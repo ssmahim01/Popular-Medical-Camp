@@ -63,7 +63,6 @@ const Navbar = () => {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/available-camps">Available Camps</NavLink>
           <NavLink to="/services">Services</NavLink>
-          <NavLink to="/generate-image">Generate Image</NavLink>
           <NavLink to="/feedbacks">Feedbacks</NavLink>
         </div>
         {user ? (
@@ -87,6 +86,9 @@ const Navbar = () => {
             >
               <div className="px-2 *:font-bold flex flex-col gap-2">
                 <h4 className="text-gray-600 font-bold">{user?.displayName}</h4>
+
+                <NavLink to="/generate-image">Generate Image</NavLink>
+
                 <NavLink
                   to={`${
                     organizer
@@ -186,7 +188,6 @@ const Navbar = () => {
               <NavLink to="/">Home</NavLink>
               <NavLink to="/available-camps">Available Camps</NavLink>
               <NavLink to="/services">Services</NavLink>
-              <NavLink to="/generate-image">Generate Image</NavLink>
               <NavLink to="/feedbacks">Feedbacks</NavLink>
             </div>
           </ul>
