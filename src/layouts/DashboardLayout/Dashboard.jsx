@@ -56,7 +56,7 @@ const Dashboard = () => {
     <div className="flex flex-col lg:flex-row h-screen w-screen bg-neutral-50">
       {/* Sidebar */}
       <div
-        className={`fixed lg:relative top-0 left-0 z-40 w-72 bg-gradient-to-r from-purple-100 to-neutral-100 shadow-lg transition-transform duration-300 ease-in-out ${
+        className={`fixed lg:relative top-0 left-0 z-40 w-[310px] bg-gradient-to-r from-purple-100 to-neutral-100 shadow-lg transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 h-screen overflow-y-auto`}
       >
@@ -73,7 +73,7 @@ const Dashboard = () => {
           </div>
         </Link>
 
-        <ul className="menu flex flex-col font-semibold space-y-4 mt-4 p-4">
+        <ul className="menu flex flex-col font-semibold space-y-4 mt-4 px-4">
           {organizer ? (
             <>
               <NavLink
