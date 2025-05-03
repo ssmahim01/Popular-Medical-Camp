@@ -13,14 +13,15 @@ import { useState } from "react";
 import Pagination from "../../../components/Pagination/Pagination";
 
 const RegisteredCamps = () => {
+  const { user } = useAuth();
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [search, setSearch] = useState("");
   const axiosSecure = useAxiosSecure();
-  const { data: count, isFetched } = useQuery({
-    queryKey: ["count"],
+  const { data: count = 0, isFetched } = useQuery({
+    queryKey: ["count", user?.email],
     queryFn: async () => {
-      const response = await axiosSecure.get("/joined-camps-count");
+      const response = await axiosSecure.get(`/joined-camps-count?email=${user?.email}`);
       return response.data.count;
     },
     enabled: true,
@@ -40,8 +41,6 @@ const RegisteredCamps = () => {
       setCurrentPage((prev) => prev + 1);
     }
   };
-
-  const { user } = useAuth();
 
   const {
     data: joinedCamps = [],

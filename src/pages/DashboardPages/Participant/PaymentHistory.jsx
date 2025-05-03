@@ -9,14 +9,15 @@ import SearchBar from "../../../components/SearchBar/SearchBar";
 import Pagination from "../../../components/Pagination/Pagination";
 
 const PaymentHistory = () => {
+  const { user } = useAuth();
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [search, setSearch] = useState("");
   const axiosSecure = useAxiosSecure();
-  const { data: count, isFetched } = useQuery({
-    queryKey: ["count"],
+  const { data: count = 0, isFetched } = useQuery({
+    queryKey: ["count", user?.email],
     queryFn: async () => {
-      const response = await axiosSecure.get("/history-count");
+      const response = await axiosSecure.get(`/history-count?email=${user?.email}`);
       return response.data.count;
     },
     enabled: true,
@@ -37,7 +38,6 @@ const PaymentHistory = () => {
     }
   };
 
-  const { user } = useAuth();
   const { data: paymentHistory = [], isPending } = useQuery({
     queryKey: ["paymentHistory", search, currentPage, itemsPerPage],
     queryFn: async () => {
