@@ -5,7 +5,7 @@ import Loading from "../../../components/Loading/Loading";
 import { TbCoinTakaFilled } from "react-icons/tb";
 import { FaTrash } from "react-icons/fa6";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import Pagination from "../../../components/Pagination/Pagination";
 
@@ -130,6 +130,14 @@ const ManageRegisteredCamps = () => {
       }
     });
   };
+
+  const handleSearchOrPageChange = () => {
+    refetch();
+  };
+
+  useEffect(() => {
+    handleSearchOrPageChange();
+  }, [search, currentPage]);
 
   if (isPending && !search && !isFetched) return <Loading />;
 

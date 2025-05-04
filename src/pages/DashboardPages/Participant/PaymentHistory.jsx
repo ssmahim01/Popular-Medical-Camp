@@ -4,7 +4,7 @@ import { useAxiosSecure } from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../components/Loading/Loading";
 import { TbCoinTakaFilled } from "react-icons/tb";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import Pagination from "../../../components/Pagination/Pagination";
 
@@ -17,10 +17,12 @@ const PaymentHistory = () => {
   const { data: count = 0, isFetched } = useQuery({
     queryKey: ["count", user?.email],
     queryFn: async () => {
-      const response = await axiosSecure.get(`/history-count?email=${user?.email}`);
+      const response = await axiosSecure.get(
+        `/history-count?email=${user?.email}`
+      );
       return response.data.count;
     },
-    enabled: true,
+    enabled: !!user?.email,
   });
 
   const totalPages = count && count > 0 ? Math.ceil(count / itemsPerPage) : 1;
@@ -38,20 +40,44 @@ const PaymentHistory = () => {
     }
   };
 
-  const { data: paymentHistory = [], isPending } = useQuery({
-    queryKey: ["paymentHistory", search, currentPage, itemsPerPage],
+  const {
+    data: paymentHistory = [],
+    refetch,
+    isPending,
+  } = useQuery({
+    queryKey: [
+      "paymentHistory",
+      user?.email,
+      search,
+      currentPage,
+      itemsPerPage,
+    ],
     queryFn: async () => {
-      const response = await axiosSecure.get(`/payment-history/${user?.email}?search=${search}&page=${currentPage}&size=${itemsPerPage}`);
+      const response = await axiosSecure.get(
+        `/payment-history/${user?.email}?search=${search}&page=${currentPage}&size=${itemsPerPage}`
+      );
       return response.data;
     },
+    enabled: !!user?.email,
   });
+
+  const handleSearchOrPageChange = () => {
+    refetch();
+  };
+
+  useEffect(() => {
+    handleSearchOrPageChange();
+  }, [search, currentPage]);
 
   if (isPending && !search && !isFetched) return <Loading />;
 
   return (
     <div className="py-6">
       <Heading title={"Payment History"} />
-      <SearchBar placeholderText={"Search by Camp Name, Fees or Statuses..."} onSearch={setSearch} />
+      <SearchBar
+        placeholderText={"Search by Camp Name, Fees or Statuses..."}
+        onSearch={setSearch}
+      />
 
       <div className="overflow-x-auto bg-base-100 bg-opacity-80 shadow-md md:rounded-lg">
         <table className="table w-full">
@@ -89,15 +115,27 @@ const PaymentHistory = () => {
                 </td>
 
                 <td>
-                    <p className={`badge text-white font-semibold ${payment?.paymentStatus === "Paid" ? "bg-purple-600" : "badge-neutral"}`}>
-                      {payment?.paymentStatus}
-                    </p>
+                  <p
+                    className={`badge text-white font-semibold ${
+                      payment?.paymentStatus === "Paid"
+                        ? "bg-purple-600"
+                        : "badge-neutral"
+                    }`}
+                  >
+                    {payment?.paymentStatus}
+                  </p>
                 </td>
 
                 <td>
-                    <p className={`badge text-white font-semibold ${payment?.confirmationStatus === "Confirmed" ? "badge-success" : "badge-neutral"}`}>
-                      {payment?.confirmationStatus}
-                    </p>
+                  <p
+                    className={`badge text-white font-semibold ${
+                      payment?.confirmationStatus === "Confirmed"
+                        ? "badge-success"
+                        : "badge-neutral"
+                    }`}
+                  >
+                    {payment?.confirmationStatus}
+                  </p>
                 </td>
               </tr>
             ))}

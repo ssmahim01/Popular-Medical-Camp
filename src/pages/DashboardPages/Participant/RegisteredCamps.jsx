@@ -9,7 +9,7 @@ import handleFeedbackModal from "../../../components/FeedbackModal/handleFeedbac
 import { Link } from "react-router-dom";
 import { MdPayment } from "react-icons/md";
 import SearchBar from "../../../components/SearchBar/SearchBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "../../../components/Pagination/Pagination";
 
 const RegisteredCamps = () => {
@@ -21,10 +21,12 @@ const RegisteredCamps = () => {
   const { data: count = 0, isFetched } = useQuery({
     queryKey: ["count", user?.email],
     queryFn: async () => {
-      const response = await axiosSecure.get(`/joined-camps-count?email=${user?.email}`);
+      const response = await axiosSecure.get(
+        `/joined-camps-count?email=${user?.email}`
+      );
       return response.data.count;
     },
-    enabled: true,
+    enabled: !!user?.email,
   });
 
   const totalPages = count && count > 0 ? Math.ceil(count / itemsPerPage) : 1;
@@ -54,6 +56,7 @@ const RegisteredCamps = () => {
       );
       return response.data;
     },
+    enabled: !!user?.email,
   });
 
   const handleCancel = (camp) => {
@@ -85,12 +88,23 @@ const RegisteredCamps = () => {
     });
   };
 
+  const handleSearchOrPageChange = () => {
+    refetch();
+  };
+
+  useEffect(() => {
+    handleSearchOrPageChange();
+  }, [search, currentPage]);
+
   if (isPending && !search && !isFetched) return <Loading />;
 
   return (
     <div className="py-6">
       <Heading title={"Registered Camps"} />
-      <SearchBar placeholderText={"Search by Camp Name, Fees or Payment..."} onSearch={setSearch} />
+      <SearchBar
+        placeholderText={"Search by Camp Name, Fees or Payment..."}
+        onSearch={setSearch}
+      />
 
       <div className="overflow-x-auto bg-base-100 bg-opacity-80 shadow-md md:rounded-lg">
         <table className="table w-full">
@@ -141,10 +155,7 @@ const RegisteredCamps = () => {
                       className="btn btn-sm text-white bg-emerald-500 font-bold border-none rounded flex gap-2 items-center"
                       disabled={camp?.paymentStatus === "Paid"}
                     >
-                      <MdPayment className="text-lg" />{" "}
-                      <span>
-                      Paid
-                      </span>
+                      <MdPayment className="text-lg" /> <span>Paid</span>
                     </button>
                   )}
                 </td>
@@ -165,7 +176,9 @@ const RegisteredCamps = () => {
                   {camp?.paymentStatus === "Paid" &&
                   camp?.confirmationStatus === "Confirmed" ? (
                     <button
-                      onClick={() => handleFeedbackModal(camp, user, axiosSecure)}
+                      onClick={() =>
+                        handleFeedbackModal(camp, user, axiosSecure)
+                      }
                       className="btn btn-sm bg-purple-600 border-none text-white font-bold"
                     >
                       Feedback

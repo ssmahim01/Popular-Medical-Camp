@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import { useQuery } from "@tanstack/react-query";
 import Pagination from "../../../components/Pagination/Pagination";
+import { useEffect } from "react";
 
 const ManageCamps = () => {
   const [camps, refetch, isPending, search, setSearch, currentPage, setCurrentPage, itemsPerPage] = useCamps();
@@ -64,6 +65,14 @@ const ManageCamps = () => {
       }
     });
   };
+
+  const handleSearchOrPageChange = () => {
+    refetch();
+  };
+
+  useEffect(() => {
+    handleSearchOrPageChange();
+  }, [search, currentPage]);
 
   if (isPending && !search && !isFetched) return <Loading />;
 

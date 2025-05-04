@@ -72,7 +72,7 @@ const Navbar = () => {
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-12 h-12 border-4 border-cyan-600 rounded-full hover:border-gray-300">
+              <div className="w-12 h-12 border-4 border-cyan-600 rounded-full hover:border-cyan-700">
                 <img
                   alt={user ? user?.displayName : "Guest user"}
                   src={user ? user?.photoURL : userImg}
@@ -168,7 +168,7 @@ const Navbar = () => {
               {user && (
                 <div className="mb-4 border-b border-neutral-300 py-3">
                   <img
-                    className="block lg:hidden mb-2 md:w-20 md:h-20 w-14 h-14 rounded-full border-4 border-indigo-500 shadow-lg"
+                    className="block lg:hidden mb-2 md:w-20 md:h-20 w-14 h-14 rounded-full border-4 border-cyan-600 hover:border-cyan-700 shadow-lg"
                     src={user?.photoURL}
                     referrerPolicy="no-referrer"
                     alt={user?.displayName}
