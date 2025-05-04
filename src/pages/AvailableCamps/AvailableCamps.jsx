@@ -25,7 +25,7 @@ const AvailableCamps = () => {
 
   return (
     <div className="pt-6 pb-12 lg:w-4/5 w-11/12 mx-auto">
-      <Heading title={"Available Camps"} />
+      <Heading title={"Available Camps"} center />
 
       {/* Search Bar */}
       <div className="flex md:flex-row flex-col-reverse md:justify-between justify-center items-center mb-8">

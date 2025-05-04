@@ -159,7 +159,7 @@ const Navbar = () => {
         {modalOpen && (
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-gradient-to-l from-purple-50 to-neutral-200 rounded-t-none rounded-b-lg z-[50] mt-2 md:w-96 w-80 p-4 right-2 shadow-sm *:text-gray-700 *:font-bold"
+            className="menu menu-sm dropdown-content bg-gradient-to-r from-purple-50 to-neutral-200 rounded-t-none rounded-b-lg z-[50] mt-2 md:w-96 w-80 p-4 right-2 border-none *:text-gray-700 *:font-bold"
           >
             <div
               className="tooltip tooltip-bottom"
@@ -185,10 +185,21 @@ const Navbar = () => {
             </div>
 
             <div className="w-1/2 flex flex-col gap-3">
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="/available-camps">Available Camps</NavLink>
-              <NavLink to="/services">Services</NavLink>
-              <NavLink to="/feedbacks">Feedbacks</NavLink>
+              <NavLink to="/" onClick={() => setModalOpen(false)}>
+                Home
+              </NavLink>
+              <NavLink
+                to="/available-camps"
+                onClick={() => setModalOpen(false)}
+              >
+                Available Camps
+              </NavLink>
+              <NavLink to="/services" onClick={() => setModalOpen(false)}>
+                Services
+              </NavLink>
+              <NavLink to="/feedbacks" onClick={() => setModalOpen(false)}>
+                Feedbacks
+              </NavLink>
             </div>
           </ul>
         )}

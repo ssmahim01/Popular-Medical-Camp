@@ -91,13 +91,13 @@ const Footer = () => {
               </NavLink>
               <NavLink
                 to="/available-camps"
-                className="text-neutral-700 hover:text-purple-600 w-3/5 transition-colors"
+                className="text-neutral-700 hover:text-purple-600 w-3/4 transition-colors"
               >
                 Available Camps
               </NavLink>
               <NavLink
                 to="/feedbacks"
-                className="text-neutral-700 hover:text-purple-600 w-3/5 transition-colors"
+                className="text-neutral-700 hover:text-purple-600 w-3/4 transition-colors"
               >
                 Feedbacks
               </NavLink>
@@ -128,7 +128,7 @@ const Footer = () => {
               </NavLink>
               <NavLink
                 to="/generate-image"
-                className="text-neutral-700 hover:text-purple-600 w-3/5 transition-colors"
+                className="text-neutral-700 hover:text-purple-600 w-3/4 transition-colors"
               >
                 Generate Image
               </NavLink>

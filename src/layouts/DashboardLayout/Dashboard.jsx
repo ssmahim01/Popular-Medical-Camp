@@ -279,7 +279,7 @@ const Dashboard = () => {
           location.pathname !== "/dashboard/participant-profile" &&
           location.pathname !== "/dashboard/organizer-home" &&
           location.pathname !== "/dashboard/participant-home"
-            ? "md:p-5 p-4"
+            ? "md:px-5 md:py-7 px-4 py-6"
             : ""
         } flex-1 h-screen w-full overflow-y-auto bg-gradient-to-l from-purple-50 to-neutral-100`}
         onClick={() => isSidebarOpen && setIsSidebarOpen(false)}
