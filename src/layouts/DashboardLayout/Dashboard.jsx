@@ -61,7 +61,7 @@ const Dashboard = () => {
         } lg:translate-x-0 h-screen overflow-y-auto`}
       >
         <Link to="/">
-          <div className="p-4 flex items-center border-b border-gray-200 shadow-sm">
+          <div className="p-4 flex items-center border-b border-neutral-200 bg-purple-100 shadow-sm sticky top-0 z-40">
             <img
               className="w-9 h-9 object-cover"
               src={logo}
@@ -233,10 +233,8 @@ const Dashboard = () => {
           >
             <RiAiGenerate className="text-lg" /> Generate Image
           </NavLink>
-
-          <div className="divider my-2"></div>
-
-          <div className="flex flex-col">
+        </ul>
+          <div className="flex flex-col sticky border-t p-4 border-neutral-200 bg-purple-100 mt-4 bottom-0 z-40">
           <div className="flex gap-2 items-center">
             <div className="w-12 h-12">
               <img
@@ -261,7 +259,6 @@ const Dashboard = () => {
             <TbLogout2 className="text-xl" /> Logout
           </button>
           </div>
-        </ul>
       </div>
 
       {/* Sidebar Toggle Button */}
